@@ -3,6 +3,8 @@ body {
 	margin:0px 0px 0px 0px;
     background-color: rgb(255, 193, 79);
 }
+body, html {cursor: url(resources/img/FnCursor.png), url(myBall.cur), auto}
+a {cursor: url(resources/img/cursor_pointer.png), url(myBall.cur), auto}
 
 a{
     text-decoration: none;                          /* a태그 보라색 밑줄 없애기 */
@@ -10,7 +12,6 @@ a{
     margin-bottom: 20px;
 }
 
-body, html {cursor: url(FnCursor.png), url(myBall.cur), auto}
 a {cursor: url(cursor_pointer.png), url(myBall.cur), auto}
 
 header {
