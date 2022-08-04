@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: mitakeran
+=======
+Built-By: allmight
+>>>>>>> 515c769e20996931c2474144cff6eb1b9ec01fb4
 Build-Jdk: 14.0.2
 Created-By: Maven Integration for Eclipse
 
