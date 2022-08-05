@@ -17,7 +17,7 @@ public class LoginController {
 	public String loginGo(HttpServletRequest req) {
 		
 		//로그인페이지로 이동하기
-		
+		lDAO.loginCheck(req);
 		req.setAttribute("contentPage", "t2login/t2_login.jsp");
 		
 		return "2Team/t2_index";
@@ -36,6 +36,8 @@ public class LoginController {
 			
 		}
 		
+		//로그인 체크
+		lDAO.loginCheck(req);
 		
 		return "2Team/t2_index";
 	}

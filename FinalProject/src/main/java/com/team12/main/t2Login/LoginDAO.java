@@ -35,4 +35,18 @@ public class LoginDAO {
 		
 	}
 
+	public boolean loginCheck(HttpServletRequest req) {
+		// 로그인 체크 
+		Membert2 m = (Membert2) req.getSession().getAttribute("loginMember");
+		if (m != null) {
+			req.setAttribute("loginPage", "t2login/loginOK.jsp");
+			return true;
+		}else {
+			req.setAttribute("loginPage", "t2login/login.jsp");
+			return false;
+			
+		}
+		
+	}
+
 }
