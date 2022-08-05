@@ -67,12 +67,12 @@ public class MemberController {
 		
 		// 세션이 없을 때 null인데 그걸 잘라달라하면 500에러
 		mDAO.splitAddr(req);
-		req.setAttribute("contentPage", "LDH/info.jsp");
+		req.setAttribute("contentPage", "../LDH/info.jsp");
 		
 		} else {
-			req.setAttribute("contentPage", "home.jsp");
+			req.setAttribute("contentPage", "t1_home.jsp");
 		}
-		return "index";
+		return "1Team/t1_index";
 	}
 	
 	
