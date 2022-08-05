@@ -9,7 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+    <body>
     <div class="about_wrapper">
+
         <div class="about_main">
             <div class="about_main_txt">
                 <h2>DengStiny Give Pet Happiness</h2>
@@ -39,17 +41,39 @@
 
         <div class="about_sub">
             <div class="about_sub_txt">
-                <h2>We Are Support <br>
-                    Abandoned Pet!</h2>
+                <h2>We Are Support Abandoned Pet!
+                    </h2>
                 <p>댕스티니는 유기동물의 입양을 돕고 있습니다
                     </p>
                 </div>
         </div>
         <div class="about_sub_img">
             <div>
+                <p id="about_sub_p" align="center">Be my Family</p>
                 <img class="about_sub_img_dog" src="resources/img/dogs.jpg">
             </div>
         </div>
+
+        <div class="about_sub_care">
+            <div class="about_sub_care_txt">
+                <h2>Always with Abandoned Pet</h2>
+                <p>입양 후 유기동물의 행복하고 건강한 생활을 위해<br>
+                    유기동물의 건강검진을 지원하고 있습니다.
+                    </p>
+                </div>
         </div>
+        <div class="about_sub_care_img">
+            <div>
+                <img class="about_sub_care_img_dog1" src="resources/img/care_pet.jpg">
+            </div>
+            <div>
+                <img class="about_sub_care_img_dog2" src="resources/img/pet_cure.jpg">
+            </div>
+        </div>
+
+
+
+    </div>
+    
 </body>
 </html>
