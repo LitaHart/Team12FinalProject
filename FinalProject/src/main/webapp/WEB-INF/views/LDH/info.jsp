@@ -44,12 +44,6 @@
                 </div>
                 
                 <div>
-                    <div align="center" style="background-color: #FFFFFF;">
-                        <button>수정</button>
-                        <button onclick="bye();" type="button">탈퇴</button>
-                    </div>
-                </div>
-                <div>
                     <div class="td1">사진</div>
                     <div class="td2">
                         <img src="resources/files/${sessionScope.loginMember.m_photo }" id="updateMemberPhoto"><br>
@@ -57,6 +51,12 @@
                     </div>
                 </div>
                 
+                <div>
+                    <div align="center" style="background-color: #FFFFFF;">
+                        <button>수정</button>
+                        <button onclick="bye();" type="button">탈퇴</button>
+                    </div>
+                </div>
                 
         </form>
             </div>
