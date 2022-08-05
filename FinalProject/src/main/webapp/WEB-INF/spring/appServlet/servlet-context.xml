@@ -39,14 +39,14 @@
  		<beans:property name="username" value="CYJ" />
 		<beans:property name="password" value="YJ802soldesk" />
 
+
 		<beans:property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
 		<beans:property name="username" value="kwb" />
 		<beans:property name="password" value="kwb" /> -->
 
-		<!-- <beans:property name="url"
-			value="jdbc:oracle:thin:@db202204301707_medium?TNS_ADMIN=/Users/choeyongjun/Wallet_DB202204301707" />
-		<beans:property name="username" value="CYJ" />
-		<beans:property name="password" value="YJ802soldesk" />
+		<beans:property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<beans:property name="username" value="c##sj" />
+		<beans:property name="password" value="sj" />
 
 		<beans:property name="url" value="jdbc:oracle:thin:@db20220512150004_high?TNS_ADMIN=/Users/mitakeran/LDH/Wallet_DB20220512150004"/>
 		<beans:property name="username" value="ADMIN" />
@@ -55,7 +55,6 @@
 		<beans:property name="username" value="ADMIN" />
 		<beans:property name="password" value="LDHsoldesk802" />
  -->
-
 	</beans:bean>
 
 
@@ -75,6 +74,7 @@
 				<beans:value>classpath:team2/YJ/regProductMapper.xml</beans:value>
 				<beans:value>classpath:team1joinMapper.xml</beans:value>
 				<beans:value>classpath:team2BoardMapper.xml</beans:value>
+				<beans:value>classpath:team2loginMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
