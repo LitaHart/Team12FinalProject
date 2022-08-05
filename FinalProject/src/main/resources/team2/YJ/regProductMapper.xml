@@ -3,7 +3,7 @@
 <mapper namespace="com.team12.main.t2.regProduct.RegProductMapper">
 
 	<insert id="regProduct">
-		insert into file_test2 values(#{f_name})
+		insert into file_test3 values(#{f_name},#{f_name2})
 	</insert>
 
 	

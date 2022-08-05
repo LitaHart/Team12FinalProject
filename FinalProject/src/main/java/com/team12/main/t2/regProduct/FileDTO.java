@@ -4,6 +4,7 @@ public class FileDTO {
 
 	
 	private String f_name;
+	private String f_name2;
 	
 	
 	public FileDTO() {
@@ -11,9 +12,10 @@ public class FileDTO {
 	}
 
 
-	public FileDTO(String f_name) {
+	public FileDTO(String f_name, String f_name2) {
 		super();
 		this.f_name = f_name;
+		this.f_name2 = f_name2;
 	}
 
 
@@ -25,6 +27,19 @@ public class FileDTO {
 	public void setF_name(String f_name) {
 		this.f_name = f_name;
 	}
+
+
+	public String getF_name2() {
+		return f_name2;
+	}
+
+
+	public void setF_name2(String f_name2) {
+		this.f_name2 = f_name2;
+	}
+	
+	
+	
 	
 	
 	

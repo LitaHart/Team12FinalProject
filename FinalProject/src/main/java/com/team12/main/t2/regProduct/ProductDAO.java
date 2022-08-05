@@ -98,56 +98,75 @@ public class ProductDAO {
 
 
 	public void regProduct(Model model, HttpServletRequest request, List<MultipartFile> multiFileList, MultipartFile file) {
-
-			
 		
+			String path = request.getSession().getServletContext().getRealPath("resources/t2_yj_files");
+
+			String changeFile = "";
+			
+			
 		for (int i = 0; i < multiFileList.size(); i++) {
 			
 			String originFile = multiFileList.get(i).getOriginalFilename();
 			String ext = originFile.substring(originFile.lastIndexOf("."));
-			String changeFile = UUID.randomUUID().toString() + ext;
-			
-			System.out.println(changeFile);
-				
-			
+			changeFile += UUID.randomUUID().toString() + ext + "!";
+
 		}
 		
+		System.out.println(changeFile);
 		
-		String path = request.getSession().getServletContext().getRealPath("resources/t2_yj_files");
+		
+		FileDTO fDTO = null; 
+		fDTO = new FileDTO();
+		fDTO.setF_name(changeFile);
 		
 		
 		try {
-			
-			
 			
 			String fileName = file.getOriginalFilename();
 			System.out.println(path);
 			
 			String saveFileName = UUID.randomUUID().toString() + fileName.substring(fileName.lastIndexOf("."));
-			System.out.println(fileName);
 			System.out.println(saveFileName);
 			
-			FileDTO fDTO = new FileDTO();
+			fDTO = new FileDTO();
 			fDTO.setF_name(saveFileName);
-					
+			fDTO.setF_name2(changeFile);
+			
+			
+			
 			
 			if(!file.getOriginalFilename().isEmpty()) {
 				// 실제 업로드 코드
+				
 				file.transferTo(new File(path,saveFileName));
+				file.transferTo(new File(path,changeFile));
 														// 파일 이름.
 				ss.getMapper(RegProductMapper.class).regProduct(fDTO);
 				model.addAttribute("r","file uploaded !");
 				model.addAttribute("fileName",saveFileName);
 			}else {
 				model.addAttribute("r","fail...");
-				
-			}
 			
 			
-				
-			} catch (Exception e) {
-				e.printStackTrace();
+			
+			
+			
+			
+			
+			
+			
 			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		
+		
+		
+		
+	
 			
 		
 		
