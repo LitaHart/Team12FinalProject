@@ -82,8 +82,8 @@ public class MemberController {
 		
 		mDAO.logout(req);
 		mDAO.loginCheck(req);
-		req.setAttribute("contentPage", "home.jsp");
-		return "index";
+		req.setAttribute("contentPage", "t1_home.jsp");
+		return "1Team/t1_index";
 	}
 	
 	@RequestMapping(value = "member.update", method = RequestMethod.POST)
@@ -91,11 +91,11 @@ public class MemberController {
 		if (mDAO.loginCheck(req)) {
 			mDAO.update(m, req);
 			mDAO.splitAddr(req);
-			req.setAttribute("contentPage", "LDH/info.jsp");
+			req.setAttribute("contentPage", "../LDH/info.jsp");
 		} else {
-			req.setAttribute("contentPage", "home.jsp");
+			req.setAttribute("contentPage", "t1_home.jsp");
 		}
-		return "index";
+		return "1Team/t1_index";
 	}
 	
 	@RequestMapping(value = "member.bye", method = RequestMethod.GET)
