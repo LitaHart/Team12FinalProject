@@ -20,6 +20,10 @@
 	<link href='resources/t2_css/style.css' rel='stylesheet' type='text/css'>
 	<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
 	<link rel="stylesheet" type="text/css" href="css/settings.css" media="screen" />
+	<link href='resources/t2_css/hospital_main.css' rel='stylesheet' type='text/css'> 
+	<!-- Hospital CSS  -->
+	<script type="text/javascript" src="resources/t2_js/jQuery.js"></script>
+	<!-- jQuery JAVA SCRIPT -->
 
 </head>
 <body>
