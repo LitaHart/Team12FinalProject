@@ -3,6 +3,7 @@ package com.team12.main.t2.regProduct;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -100,21 +101,38 @@ public class ProductDAO {
 	public void regProduct(Model model, HttpServletRequest request, List<MultipartFile> multiFileList, MultipartFile file) {
 		
 			String path = request.getSession().getServletContext().getRealPath("resources/t2_yj_files");
-
+			System.out.println(path);
 			String changeFile = "";
 			
-			
+			String newFileName ="";
+			try {
 		for (int i = 0; i < multiFileList.size(); i++) {
 			
 			String originFile = multiFileList.get(i).getOriginalFilename();
 			String ext = originFile.substring(originFile.lastIndexOf("."));
+			newFileName = UUID.randomUUID().toString() + ext;
+			System.out.println(newFileName);
 			changeFile += UUID.randomUUID().toString() + ext + "!";
 
+		
+			File uploadFile = new File(path + "/" + newFileName);
+					multiFileList.get(i).transferTo(uploadFile);
+					System.out.println("다중 파일 업로드 성공!");
+		}
+				} catch (Exception e) {
+					System.out.println("fail");
+					e.printStackTrace();
+				}
+			
+			
+		
+		
+		
+		
 		}
 		
-		System.out.println(changeFile);
-		
-		
+		/*
+		 * 
 		FileDTO fDTO = null; 
 		fDTO = new FileDTO();
 		fDTO.setF_name(changeFile);
@@ -132,12 +150,14 @@ public class ProductDAO {
 			fDTO.setF_name(saveFileName);
 			fDTO.setF_name2(changeFile);
 			
-			
-			
-			
+			//
 			if(!file.getOriginalFilename().isEmpty()) {
-				// 실제 업로드 코드
 				
+				String[] imgs = changeFile.split("!");
+			//	
+				
+				// 실제 업로드 코드
+				System.out.println("여기까지옴2");
 				file.transferTo(new File(path,saveFileName));
 				file.transferTo(new File(path,changeFile));
 														// 파일 이름.
@@ -148,35 +168,13 @@ public class ProductDAO {
 				model.addAttribute("r","fail...");
 			
 			
-			
-			
-			
-			
-			
-			
-			
 			}
 			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		
-		
-		
-		
-		
-		
-	
-			
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		*/
 	}
 
 
@@ -224,4 +222,4 @@ public class ProductDAO {
 	
 	
 	
-	}
+	
