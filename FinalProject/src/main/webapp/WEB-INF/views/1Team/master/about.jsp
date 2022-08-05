@@ -53,6 +53,8 @@
             <div>
                 <p id="about_sub_p" align="center">Be my Family</p>
                 <img class="about_sub_img_dog" src="resources/img/dogs.jpg">
+                <img class="dog_drop" src="resources/img/drop.png" alt="">
+                <img class="dog_drop3" src="resources/img/drop.png" alt="">
             </div>
         </div>
 
@@ -89,7 +91,7 @@
             <div class="about_sub_donate_img_wrapper1">
                 <img class="about_sub_donate_img_dog1" src="resources/img/store_cat.jpg"
                 data-aos="fade-up-left" data-aos-duration="1500"
-                data-aos-offset="400">
+                data-aos-offset="350">
             </div>
             <p class="go_donate">
                 <a href="">Go Donate ←</a>
@@ -97,7 +99,7 @@
             <div class="about_sub_donate_img_wrapper2">
                 <img class="about_sub_donate_img_dog2" src="resources/img/store.jpg"
                 data-aos="fade-down-right" data-aos-duration="1500"
-                data-aos-offset="400">
+                data-aos-offset="350">
             </div>
 
         </div>
