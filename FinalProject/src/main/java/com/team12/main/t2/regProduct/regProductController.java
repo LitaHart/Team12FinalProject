@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 
 @Controller
 public class regProductController {
@@ -26,7 +26,7 @@ public class regProductController {
 	public String regProductPage(HttpServletRequest request) {
 		
 		// 상품가져오는일
-		//pDAO.getAllProduct(request);
+		pDAO.getAllProduct(request);
 		
 		request.setAttribute("contentPage", "YJ/regProductPage.jsp");
 		
@@ -35,17 +35,21 @@ public class regProductController {
 	
 	
 	
-	
-	
-	
-	
-	
-
-	
-	
+	// 정보 등록
 	@RequestMapping(value = "/Product.upload", method = RequestMethod.POST)
-	public String regProduct(@RequestParam("productThumbnail")MultipartFile file, @RequestParam("productImg") List<MultipartFile> multiFileList,Model model ,HttpServletRequest request) {		
-		pDAO.regProduct(model,request,multiFileList,file);
+	public String regProduct(@RequestParam("productThumbnail")MultipartFile file, @RequestParam("productImg") List<MultipartFile> multiFileList,Model model ,HttpServletRequest request,
+			@RequestParam("pet_category") String pet_category,
+			@RequestParam("toy_category") String toy_category,
+			@RequestParam("productName") String productName,
+			@RequestParam("productPrice") int productPrice,
+			@RequestParam("productInfo") String productInfo,
+			@RequestParam("productStock") int productStock,
+			@RequestParam("onExhibition") String onExhibition,
+			@RequestParam("productTag") String [] productTag){
+		
+		
+		pDAO.regProduct(model,request,multiFileList,file,pet_category,toy_category,productName,productPrice,productInfo,productStock,onExhibition,productTag);
+		pDAO.getAllProduct(request);
 				
 		request.setAttribute("contentPage", "YJ/regProductPage.jsp");
 		return "2Team/t2_index";

@@ -16,9 +16,6 @@
 	</properties>
 	<dependencies>
 		
-		
-	
-		
 	
 		<!--Spring 환경에서 ORMFramework사용 가능하게 -->
 		<dependency>

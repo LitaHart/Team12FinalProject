@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,9 +44,9 @@
 
 <form name="form" action="Product.upload" method="post"enctype="multipart/form-data">
 
-zzaa
+
 		<table>
-			<!-- <tr>
+			<tr>
 				<td>카테고리</td>
 				<td><select name="pet_category" id="pet_category">
     				<option value="">동물 분류</option>
@@ -61,20 +62,20 @@ zzaa
     				<option value="snack">Snack</option>
     				<option value="toy">toy</option>
 					</select></td>
-			</tr>-->
+			</tr>
 			<tr>
 				<td>제품 이름</td>
 				<td><input  id="productName" class="" name="productName"></td>
 			</tr>
-			<!-- <tr>
+			<tr>
 				<td>제품 가격</td>
 				<td><input type="number" id="productPrice" min="0"step="100" class="" name="productPrice"></td>
-			</tr> -->
+			</tr>
 			<tr>
 				<td>제품 정보</td>
 				<td><textarea id="productInfo"name="productInfo"></textarea></td>
 			</tr>
-			<!--<tr>
+			<tr>
 				<td>재고</td>
 				<td><input type="number" id="productStock" min="0" class="" name="productStock"></td>
 			</tr>
@@ -82,7 +83,7 @@ zzaa
 				<td>진열 여부</td>
 				<td>공개  <input type = "radio"  id="onExhibition"name = "onExhibition" value= "Y">
 					비공개 <input type = "radio" id="onExhibition" name = "onExhibition" value= "N"></td>
-			</tr> -->
+			</tr>
 			<tr>
 				<td>대표 사진</td>
 				<td><input type="file" name="productThumbnail" id="productThumbnail"></td>
@@ -91,7 +92,7 @@ zzaa
 				<td>상세 이미지</td>
 				<td><input type="file" multiple="multiple" id="productImg" name="productImg"></td>
 			</tr>
-		<!--</table>
+		</table>
 		<table>
 			<tr>
 				<td>
@@ -106,18 +107,17 @@ zzaa
 						</tr>
 					</table>
 				</td>
-			</tr> -->
+			</tr>
 		</table>
 	</form>
 
-	<!-- <table>
+	<table>
 		<tr>
 			<td>
-				<input class="ingredient_txt_reg_btn" name="addButton" type="button" style="cursor: hand" onClick="insRow()" value="재료 추가">
+				<input class="tag_reg_btn" name="addButton" type="button" style="cursor: hand" onClick="insRow()" value="태그 추가">
 			</td>
 		</tr>
-	</table> -->
-
+	</table>
 	<table>
 		<tr>
 			<td><input class="reg_input" type="button" name="button" value="등록"
@@ -126,9 +126,52 @@ zzaa
 		</tr>
 	</table>
 
+<c:forEach var="p" items="${Product}">
 
-
-	${products}
+<table>
+	<tr>
+		<td>${p.pet_category}</td>
+	</tr>
+	<tr>
+		<td>${p.toy_category}</td>
+	</tr>
+	<tr>
+		<td>${p.productName}</td>
+	</tr>
+	<tr>
+		<td>${p.productPrice}</td>
+	</tr>
+	<tr>
+		<td>${p.productInfo}</td>
+	</tr>
+	<tr>
+		<td>${p.productStock}</td>
+	</tr>
+	<tr>
+		<td>${p.onExhibition}</td>
+	</tr>
+	<tr>
+		<td>${p.onExhibition}</td>
+	</tr>
+	<tr>
+		<td><c:forTokens var="item" items="${p.productTag }" delims="!">
+				${item }<br>
+			</c:forTokens>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="resources/t2_yj_files/${p.productThumbnail }"></td>
+	</tr>
+	<tr>
+		<td><c:forTokens var="item" items="${p.productImg }" delims="!">
+				<img src="resources/t2_yj_files/${item }">
+			</c:forTokens>
+		</td>
+	</tr>
+</table>
+	
+</c:forEach>
+	
 						
 
 

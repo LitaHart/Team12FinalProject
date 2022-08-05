@@ -3,7 +3,6 @@ package com.team12.main.t2.regProduct;
 
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,65 +29,9 @@ public class ProductDAO {
 	private SqlSession ss;
 
 	
-
-
-		
-		
-		/*
-		
-		try {
-		String pet_category = mr.getParameter("pet_category");
-		String toy_category = mr.getParameter("toy_category");
-		String productName = mr.getParameter("productName");
-		int productPrice = Integer.parseInt(mr.getParameter("productPrice"));
-		String productInfo = mr.getParameter("productInfo");
-		String onExhibition = mr.getParameter("onExhibition");
-		int productStock = Integer.parseInt(mr.getParameter("productStock"));
-		String[] productTag = mr.getParameterValues("productTag");
-		String productThumbnail = mr.getFilesystemName("productThumbnail");
-		
-		String productTag2 = "";
-		
-		if (productTag != null) {
-			for (String s : productTag) {
-				System.out.println(s);
-				productTag2 += s + "!";
-			}
-		}
-		
-		
-			
-			
-			p.setProductName(productName);;
-			p.setProductPrice(productPrice);
-			p.setProductInfo(productInfo);
-			p.setProductStock(productStock);
-			p.setOnExhibition(onExhibition);
-			p.setProductTag(productTag2);
-			p.setPet_category(pet_category);
-			p.setToy_category(toy_category);
-			p.setProductThumbnail(productThumbnail);
-			p.setProductImg(productImg);
-			
-			
-			if (ss.getMapper(Product.class).regProduct(p) == 1) {
-				request.setAttribute("result", "가입성공");
-			} else {
-				request.setAttribute("result", "가입실패");
-			}*/
-		/*
-		 * } catch (Exception e) { e.printStackTrace(); String fileName =
-		 * mr.getFilesystemName("m_photo"); new File(path + "/" + fileName).delete();
-		 * request.setAttribute("result", "가입실패"); }
-		 */
-			
-		
-	
-
 	public void getAllProduct(HttpServletRequest request) {
-
 		try {
-			request.setAttribute("products", ss.getMapper(ViewAllProductMapper.class).getAllProduct());
+			request.setAttribute("Product", ss.getMapper(ViewAllProductMapper.class).getAllProduct());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -97,84 +40,111 @@ public class ProductDAO {
 
 
 
+	// 등록
+	public void regProduct(Model model, HttpServletRequest request, List<MultipartFile> multiFileList,
+			MultipartFile file, String pet_category, String toy_category, String productName, int productPrice,
+			String productInfo, int productStock, String onExhibition, String[] productTag) {
 
-	public void regProduct(Model model, HttpServletRequest request, List<MultipartFile> multiFileList, MultipartFile file) {
+		String productTag2 = "";
 		
-			String path = request.getSession().getServletContext().getRealPath("resources/t2_yj_files");
-			System.out.println(path);
-			String changeFile = "";
-			
-			String newFileName ="";
-			try {
-		for (int i = 0; i < multiFileList.size(); i++) {
-			
-			String originFile = multiFileList.get(i).getOriginalFilename();
-			String ext = originFile.substring(originFile.lastIndexOf("."));
-			newFileName = UUID.randomUUID().toString() + ext;
-			System.out.println(newFileName);
-			changeFile += UUID.randomUUID().toString() + ext + "!";
-
 		
-			File uploadFile = new File(path + "/" + newFileName);
-					multiFileList.get(i).transferTo(uploadFile);
-					System.out.println("다중 파일 업로드 성공!");
-		}
-				} catch (Exception e) {
-					System.out.println("fail");
-					e.printStackTrace();
-				}
-			
-			
+		if (productTag != null) {
+			for (String s : productTag) {
+				productTag2 += s + "!";
+			}	
+		}else {
+			productTag2 = "태그 없음";
+		}	
 		
 		
 		
 		
-		}
+		String path = request.getSession().getServletContext().getRealPath("resources/t2_yj_files");
 		
-		/*
-		 * 
-		FileDTO fDTO = null; 
-		fDTO = new FileDTO();
-		fDTO.setF_name(changeFile);
+		System.out.println(path);
 		
 		
+		String changeFile = "";
+		String newFileName ="";
 		try {
 			
-			String fileName = file.getOriginalFilename();
-			System.out.println(path);
-			
-			String saveFileName = UUID.randomUUID().toString() + fileName.substring(fileName.lastIndexOf("."));
-			System.out.println(saveFileName);
-			
-			fDTO = new FileDTO();
-			fDTO.setF_name(saveFileName);
-			fDTO.setF_name2(changeFile);
-			
-			//
-			if(!file.getOriginalFilename().isEmpty()) {
-				
-				String[] imgs = changeFile.split("!");
-			//	
-				
-				// 실제 업로드 코드
-				System.out.println("여기까지옴2");
-				file.transferTo(new File(path,saveFileName));
-				file.transferTo(new File(path,changeFile));
-														// 파일 이름.
-				ss.getMapper(RegProductMapper.class).regProduct(fDTO);
-				model.addAttribute("r","file uploaded !");
-				model.addAttribute("fileName",saveFileName);
-			}else {
-				model.addAttribute("r","fail...");
 			
 			
-			}
 			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+			
+			
+	for (int i = 0; i < multiFileList.size(); i++) {
 		
-		*/
+		// 다중 파일
+		String originFile = multiFileList.get(i).getOriginalFilename();
+		String ext = originFile.substring(originFile.lastIndexOf("."));
+		newFileName = UUID.randomUUID().toString() + ext;
+		System.out.println(newFileName);
+		changeFile += newFileName + "!";
+
+	
+		File uploadFile = new File(path + "/" + newFileName);
+				multiFileList.get(i).transferTo(uploadFile);
+				System.out.println("다중 파일 업로드 성공!");
+				
+				
+	}
+
+	
+	
+	// 단일 파일
+	String fileName = file.getOriginalFilename();
+	System.out.println(path);
+	
+	String saveFileName = UUID.randomUUID().toString() + fileName.substring(fileName.lastIndexOf("."));
+	System.out.println(fileName);
+	System.out.println(saveFileName);
+	
+	
+	// 업로드
+	Product p = new Product();
+	//.setF_name(saveFileName);
+	//fDTO.setF_name2(changeFile);
+	
+	p.setPet_category(pet_category);
+	p.setToy_category(toy_category);
+	p.setProductName(productName);;
+	p.setProductPrice(productPrice);
+	p.setProductInfo(productInfo);
+	p.setProductStock(productStock);
+	p.setOnExhibition(onExhibition);
+	p.setProductTag(productTag2);
+	p.setProductThumbnail(saveFileName);
+	p.setProductImg(changeFile);
+	p.setProductTag(productTag2);
+			
+	
+	if(!file.getOriginalFilename().isEmpty()) {
+		// 실제 업로드 코드
+		file.transferTo(new File(path,saveFileName));
+												// 파일 이름.
+		ss.getMapper(RegProductMapper.class).regProduct(p);
+	}else {
+		
+	}
+	
+			} catch (Exception e) {
+				System.out.println("fail");
+				e.printStackTrace();
+			}
+		
+		
+		
+	}
+
+
+
+
+	
+		
+		
+	
+	
 	}
 
 
