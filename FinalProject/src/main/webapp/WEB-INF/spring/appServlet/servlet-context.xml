@@ -16,8 +16,6 @@
 	<context:annotation-config />
 	<tx:annotation-driven />
 	<resources mapping="/resources/**" location="/resources/" />
-	
-
 
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -27,8 +25,6 @@
 
 	<context:component-scan base-package="com.team12.main" />
 
-	
-	
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 
@@ -55,18 +51,15 @@
 		<beans:property name="username" value="ADMIN" />
 		<beans:property name="password" value="LDHsoldesk802" />
     -->
+
 	</beans:bean>
-
-
-
-
 
 
  	
 	<beans:bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<beans:property name="dataSource" ref="dataSource" />
-		</beans:bean>
+	</beans:bean>
 
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
@@ -84,15 +77,8 @@
 	</beans:bean>
 
 	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<beans:constructor-arg name="sqlSessionFactory"	ref="sqlSessionFactory" />
+		<beans:constructor-arg name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
 	</beans:bean>
-
-
-
-	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <beans:property name="maxUploadSize" value="104857600"/>
-	</beans:bean>
-	
-
 
 </beans:beans>
