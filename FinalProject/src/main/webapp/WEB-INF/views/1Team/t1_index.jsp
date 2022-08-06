@@ -15,6 +15,8 @@
 <script type="text/javascript" src="resources/js/aqicn.js"></script>
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
 <script type="text/javascript" src="resources/js/check.js"></script>
+<script type="text/javascript" src="resources/js/rememberID.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>

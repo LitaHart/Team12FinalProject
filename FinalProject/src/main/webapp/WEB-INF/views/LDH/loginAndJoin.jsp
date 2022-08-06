@@ -13,9 +13,9 @@
     <!-- SIGN IN -->
         <h1>SIGN IN</h1>
         <span id="resultArea">${result }</span>
-        <form class="more-padding" autocomplete="off" action="member.login" method="post" name="loginForm">
-          <input class="input_id"  name="m_id" placeholder="아이디"><br>
-          <input class="input_pw" name="m_pw" type="password" placeholder="비밀번호">
+        <form class="more-padding" autocomplete="off" action="member.login"  method="post" onsubmit="return frm_check();" name="loginForm" >
+          <input class="input_id"  name="m_id" id="userID" placeholder="아이디"><br>
+          <input class="input_pw" name="m_pw" id="pwd" type="password" placeholder="비밀번호">
           <div class="checkbox">
             <input type="checkbox" id="remember" /><label for="remember">remember me</label>
           </div>

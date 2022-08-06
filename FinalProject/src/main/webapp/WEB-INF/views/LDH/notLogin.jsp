@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
- <a href="loginandjoin.go"> <img class="icon_login" src="resources/img/team1join.jpg"></a>
+ <!-- <a href="loginandjoin.go"> <img class="icon_login" src="resources/img/team1join.jpg"></a> -->
 </body>
 </html>
