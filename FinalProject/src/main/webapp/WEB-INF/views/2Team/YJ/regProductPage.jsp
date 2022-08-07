@@ -126,7 +126,7 @@
 		</tr>
 	</table>
 
-<c:forEach var="p" items="${Product}">
+<%-- <c:forEach var="p" items="${Product}">
 
 <table>
 	<tr>
@@ -160,17 +160,17 @@
 		</td>
 	</tr>
 	<tr>
-		<td><img src="resources/t2_yj_files/${p.productThumbnail }"></td>
+		<td><img src="resources/t2_yj_files/${p.productThumbnail }" style="height: 300px;width:300px"></td>
 	</tr>
 	<tr>
 		<td><c:forTokens var="item" items="${p.productImg }" delims="!">
-				<img src="resources/t2_yj_files/${item }">
+				<img src="resources/t2_yj_files/${item }" style="height: 900px;width:600px"><br>
 			</c:forTokens>
 		</td>
 	</tr>
 </table>
 	
-</c:forEach>
+</c:forEach> --%>
 	
 						
 

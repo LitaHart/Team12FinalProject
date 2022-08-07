@@ -103,8 +103,6 @@ public class ProductDAO {
 	
 	// 업로드
 	Product p = new Product();
-	//.setF_name(saveFileName);
-	//fDTO.setF_name2(changeFile);
 	
 	p.setPet_category(pet_category);
 	p.setToy_category(toy_category);
@@ -124,6 +122,7 @@ public class ProductDAO {
 		file.transferTo(new File(path,saveFileName));
 												// 파일 이름.
 		ss.getMapper(RegProductMapper.class).regProduct(p);
+		System.out.println("등록 성공");
 	}else {
 		
 	}

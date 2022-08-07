@@ -49,7 +49,7 @@ public class regProductController {
 		
 		
 		pDAO.regProduct(model,request,multiFileList,file,pet_category,toy_category,productName,productPrice,productInfo,productStock,onExhibition,productTag);
-		pDAO.getAllProduct(request);
+		// pDAO.getAllProduct(request);
 				
 		request.setAttribute("contentPage", "YJ/regProductPage.jsp");
 		return "2Team/t2_index";
