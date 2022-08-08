@@ -1,4 +1,4 @@
-package com.team12.main.t2.regProduct;
+package com.team12.main.t2.shop;
 
 import java.util.List;
 
@@ -12,17 +12,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-
 @Controller
-public class regProductController {
+public class ProductController {
 
 	@Autowired
 	private ProductDAO pDAO;
 	
 	
 	
+//	이동 -------------------------------------------------------------------------
 	
-	@RequestMapping(value = "/regProductPage", method = RequestMethod.GET)
+	
+	// 상품페이지
+	@RequestMapping(value = "/viewProductPage.go", method = RequestMethod.GET)
+	public String viewProductPage(HttpServletRequest request) {
+		//상품가져오는일
+		pDAO.getAllProduct(request);
+		request.setAttribute("contentPage", "YJ/viewProductPage.jsp");
+		
+		return "2Team/t2_index";
+	}
+	
+	// 등록페이지
+	@RequestMapping(value = "/regProductPage.go", method = RequestMethod.GET)
 	public String regProductPage(HttpServletRequest request) {
 		
 		// 상품가져오는일
@@ -35,7 +47,22 @@ public class regProductController {
 	
 	
 	
-	// 정보 등록
+	// 디테일페이지
+		@RequestMapping(value = "/detail.go", method = RequestMethod.GET)
+		public String detailPage(HttpServletRequest request,Product p) {
+			//상품가져오는일
+			pDAO.getProduct(request,p);
+			request.setAttribute("contentPage", "YJ/detailProductPage.jsp");
+			
+			return "2Team/t2_index";
+		}
+	
+	
+	
+//	기능 -------------------------------------------------------------------------
+
+	
+	// 상품 등록
 	@RequestMapping(value = "/Product.upload", method = RequestMethod.POST)
 	public String regProduct(@RequestParam("productThumbnail")MultipartFile file, @RequestParam("productImg") List<MultipartFile> multiFileList,Model model ,HttpServletRequest request,
 			@RequestParam("pet_category") String pet_category,
@@ -49,13 +76,11 @@ public class regProductController {
 		
 		
 		pDAO.regProduct(model,request,multiFileList,file,pet_category,toy_category,productName,productPrice,productInfo,productStock,onExhibition,productTag);
-		// pDAO.getAllProduct(request);
+		pDAO.getAllProduct(request);
 				
 		request.setAttribute("contentPage", "YJ/regProductPage.jsp");
 		return "2Team/t2_index";
 	}
-	
-
 	
 	
 	

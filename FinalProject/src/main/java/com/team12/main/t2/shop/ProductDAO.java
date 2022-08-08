@@ -1,4 +1,4 @@
-package com.team12.main.t2.regProduct;
+package com.team12.main.t2.shop;
 
 
 
@@ -10,12 +10,12 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.taglibs.standard.lang.jstl.OrOperator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.team12.main.t2.viewProductPage.ViewAllProductMapper;
 
 
 @Service
@@ -29,9 +29,10 @@ public class ProductDAO {
 	private SqlSession ss;
 
 	
+	// 상품전체 정보 가져오기
 	public void getAllProduct(HttpServletRequest request) {
 		try {
-			request.setAttribute("Product", ss.getMapper(ViewAllProductMapper.class).getAllProduct());
+			request.setAttribute("Product", ss.getMapper(ProductMapper.class).getAllProduct());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -40,7 +41,7 @@ public class ProductDAO {
 
 
 
-	// 등록
+	// 상품 등록
 	public void regProduct(Model model, HttpServletRequest request, List<MultipartFile> multiFileList,
 			MultipartFile file, String pet_category, String toy_category, String productName, int productPrice,
 			String productInfo, int productStock, String onExhibition, String[] productTag) {
@@ -67,9 +68,6 @@ public class ProductDAO {
 		String changeFile = "";
 		String newFileName ="";
 		try {
-			
-			
-			
 			
 			
 			
@@ -121,7 +119,7 @@ public class ProductDAO {
 		// 실제 업로드 코드
 		file.transferTo(new File(path,saveFileName));
 												// 파일 이름.
-		ss.getMapper(RegProductMapper.class).regProduct(p);
+		ss.getMapper(ProductMapper.class).regProduct(p);
 		System.out.println("등록 성공");
 	}else {
 		
@@ -139,13 +137,30 @@ public class ProductDAO {
 
 
 
-	
+	public void getProduct(HttpServletRequest request, Product p) {
+		
+			System.out.println(p.getProductNum());
+		
+			request.setAttribute("Product", ss.getMapper(ProductMapper.class).getProduct(p));
 		
 		
-	
-	
+		
+	}
+		
+		
 	}
 
+
+
+
+
+
+
+	
+		
+		
+	
+	
 
 
 

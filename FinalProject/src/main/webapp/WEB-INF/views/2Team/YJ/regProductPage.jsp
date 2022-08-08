@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -126,6 +128,26 @@
 		</tr>
 	</table>
 
+
+
+ <div class="container-fluid">
+     <div class="row">
+      <c:forEach var="p" items="${Product}">
+           <div class="col-md-3">
+           <a href="#"><div class="thumbnail">
+                <img src="resources/t2_yj_files/${p.productThumbnail }" style="height: 300px;width:300px">
+                <div class="caption">
+                  <p>${fn:length(p.productName)>20?fn:substring(p.productName,0,20)+="...":p.productName }</p>
+                  <p><fmt:formatNumber value="${p.productPrice }" pattern="#,###" />원</p>
+                  <%--
+                          ${fn:메소드() fn:메소드}
+                   --%>
+                </div>
+            </div></a>
+           </div>
+         </c:forEach>
+     </div>
+    </div>
 <%-- <c:forEach var="p" items="${Product}">
 
 <table>
