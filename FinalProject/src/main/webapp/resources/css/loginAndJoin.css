@@ -259,6 +259,12 @@ hr.login_hr{
     width: 350px;
     top:730px;
     left: 950px;
+
+}
+
+#loginSuccessTable img {
+	max-width: 60px;
+	border-radius: 10px;
 }
 
 
@@ -274,6 +280,11 @@ hr.login_hr{
 	max-width: 60px;
 	border-radius: 10px;
 }
+
+#loginSuccessName {
+	color: white;
+}
+
 
 #loginSuccessName {
 	color: white;
