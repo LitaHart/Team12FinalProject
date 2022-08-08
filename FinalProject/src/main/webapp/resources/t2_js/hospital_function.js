@@ -1,23 +1,25 @@
 $(function () {
-	
 	hospital_map();
-	//hospital_list();
+	hospital_list();
 	gpsCheck();
-
-
 })
 
 
+
+
+
 $(function hospital_map() {
-
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 4 // 지도의 확대 레벨
-    			};  
-
+	
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	mapOption = {
+		center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+		level: 4 // 지도의 확대 레벨
+	};  
+	
 // 지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption);
+	var map = new kakao.maps.Map(mapContainer, mapOption);
+
+
 
 //지도가 이동, 확대, 축소로 인해 지도영역이 변경되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
 kakao.maps.event.addListener(map, 'bounds_changed', function() {             
@@ -37,8 +39,12 @@ kakao.maps.event.addListener(map, 'bounds_changed', function() {
     var resultDiv = document.getElementById('result');   
     resultDiv.innerHTML = message;
     
+    var lb = new kakao.maps.LatLngBounds(swLatlng, neLatlng);
+    
+  	
+    
+   
 });
-
 
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
@@ -97,7 +103,7 @@ if (navigator.geolocation) {
     	customOverlay.set(map);
 	});
         
- // 마커에 마우스아웃 이벤트를 등록합니다
+    // 마커에 마우스아웃 이벤트를 등록합니다
     kakao.maps.event.addListener(cLmarker, 'mouseout', function() {
         // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
     	customOverlay.set(null);
@@ -126,10 +132,6 @@ success:function(data){
 	// 동물병원 리스트 데이터입니다.
 	let hospital = data.DATA
 	
-	// 북동쪽, 남서쪽 좌표
-	//new kakao.maps.LatLngBounds(swLatlng, neLatlng);
-	
-	
 	//리스트용 테이블
 	var tableList = $("<table/>");
 	
@@ -143,8 +145,6 @@ success:function(data){
 			
 					let name =  hospital[i].bplcnm;
 					let addr = hospital[i].sitewhladdr;
-					let tel = hospital[i].sitetel;
-					let state = hospital[i].dtlstatenm;
 					let mgtno = hospital[i].mgtno;
 					
 									
@@ -153,11 +153,9 @@ success:function(data){
 
 				    // 정상적으로 검색이 완료됐으면 
 				     if (status === kakao.maps.services.Status.OK) {
-				    	 
 				    	
 
 				        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-				     
 				        
 				        var imageSrc = 'resources/t2_img/hospitalMarker.png', // 마커이미지의 주소입니다    
 				        imageSize = new kakao.maps.Size(50, 50), // 마커이미지의 크기입니다
@@ -174,11 +172,7 @@ success:function(data){
 				        	position : new kakao.maps.LatLng(result[0].y, result[0].x),
 				        	image: markerImage // 마커이미지 설정 
 				        });
-				        
-				        	console.log(swLatlng);				        
-				        	
-				        	
-				      
+				        	        
 				        
 				        	// 인포윈도우로 장소에 대한 설명을 표시합니다
 				        	var infowindow = new kakao.maps.InfoWindow({ 
@@ -198,9 +192,6 @@ success:function(data){
 				                '    </div>' +    
 				                '</div>'
 				        	});
-				        	
-				        	
-				        	
 				        	
 				        	kakao.maps.event.addListener(marker, 'click', function() {
 				        		
@@ -225,24 +216,6 @@ success:function(data){
 		
 		
 	});
-	if (new kakao.maps.LatLngBounds(swLatlng, neLatlng).equals(coords)==true) {
-		
-		var row = $("<tr/>").append(
-				$("<td/>").text(name),
-				$("<td/>").text(addr),
-				$("<td/>").text(tel),
-				$("<td/>").text(state)
-				
-				)
-				
-	
-		
-			}
-	
-			table.append(row);
-	
-	
-	$(".hospital_list").append(tableList);
 	
 }
 });
@@ -258,47 +231,49 @@ success:function(data){
 
 
 
-//$(function hospital_list(){
-//			
-//			$.ajax({
-//				url:"resources/t2_js/petHospital.json",
-//				type : "GET" ,
-//				dataType:"json",
-//				success:function(data){
-//			
-//						let hospital = data.DATA
-//						
-//						var table = $("<table/>");
-//						
-//						$.each(hospital , function(i , m) {
-//							
-//							let name = hospital[i].bplcnm;
-//							let addr = hospital[i].sitewhladdr;
-//							let tel = hospital[i].sitetel;
-//							let state = hospital[i].dtlstatenm;
-//							
-//						
-//							if(state == "정상"){
-//								
-//								if(addr != ""){
-//								
-//							var row = $("<tr/>").append(
-//									$("<td/>").text(name),
-//									$("<td/>").text(addr),
-//									$("<td/>").text(tel),
-//									$("<td/>").text(state)
-//									
-//									)
-//								}
-//							}
-//								table.append(row);
-//						});
-//						
-//						$(".hospital_list").append(table);
-//				
-//				}
-//			})
-//		})
+$(function hospital_list(lb){
+	
+	console.log("dd"+lb);
+			
+			$.ajax({
+				url:"resources/t2_js/petHospital.json",
+				type : "GET" ,
+				dataType:"json",
+				success:function(data){
+			
+						let hospital = data.DATA
+						
+						var table = $("<table/>");
+						
+						$.each(hospital , function(i , m) {
+							
+							let name = hospital[i].bplcnm;
+							let addr = hospital[i].sitewhladdr;
+							let tel = hospital[i].sitetel;
+							let state = hospital[i].dtlstatenm;
+							
+						
+							if(state == "정상"){
+								
+								if(addr != ""){
+								
+							var row = $("<tr/>").append(
+									$("<td/>").text(name),
+									$("<td/>").text(addr),
+									$("<td/>").text(tel),
+									$("<td/>").text(state)
+									
+									)
+								}
+							}
+								table.append(row);
+						});
+						
+						$(".hospital_list").append(table);
+				
+				}
+			})
+		})
 		
 		
 		
