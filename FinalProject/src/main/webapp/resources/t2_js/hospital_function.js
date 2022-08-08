@@ -1,14 +1,34 @@
-$(function () {
+
+
+
+$(function() {
 	hospital_map();
-	hospital_list();
-	gpsCheck();
-})
+	
+	let newlatlng;
+	let newlatlng2;
+	$("#map").mouseup(function() {
+
+	newlatlng =	$("#newlatlng").text();
+	newlatlng2 = $("#newlatlng2").text();
+	hospital_map(newlatlng,newlatlng2);
+	
+	});
+});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 
-
-
-$(function hospital_map() {
+function hospital_map(newlatlng1,newlatlng2) {
 	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
@@ -33,18 +53,16 @@ kakao.maps.event.addListener(map, 'bounds_changed', function() {
     // 영역정보의 북동쪽 정보를 얻어옵니다 
     var neLatlng = bounds.getNorthEast();
     
-    var message = '<p>영역좌표 <br> 남서쪽 위도, 경도 :   ' + swLatlng.toString() + '<br>'; 
-    message += '북동쪽 위도, 경도  : ' + neLatlng.toString() + ' </p>'; 
+    var message = "<p>영역좌표 <br> 남서쪽 위도, 경도 :   <span id='newlatlng'>" + swLatlng.toString() + '</span><br>'; 
+    message += "북동쪽 위도, 경도  : <span id='newlatlng2'>" + neLatlng.toString() + '</span> </p>'; 
     
     var resultDiv = document.getElementById('result');   
     resultDiv.innerHTML = message;
     
     var lb = new kakao.maps.LatLngBounds(swLatlng, neLatlng);
-    
-  	
-    
-   
 });
+
+
 
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
@@ -123,17 +141,21 @@ if (navigator.geolocation) {
 
 
 
+
+
 $.ajax({
 url:"resources/t2_js/petHospital.json",
 type : "GET" ,
 dataType:"json",
 success:function(data){
-	
 	// 동물병원 리스트 데이터입니다.
+	alert(newlatlng1 + '11111111111')
+	alert(newlatlng2 + '22222222')
 	let hospital = data.DATA
 	
 	//리스트용 테이블
 	var tableList = $("<table/>");
+
 	
 	
 	$.each(hospital , function(i , m) {
@@ -220,9 +242,8 @@ success:function(data){
 }
 });
 
-
 	
-})
+}
 
 
 
