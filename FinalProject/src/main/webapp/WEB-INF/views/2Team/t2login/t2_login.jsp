@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/t2_css/t2_login.css">
 </head>
-<body class="login_body">
+<body>
 
+	
 	
 	<div class="login_didididiv">
 	
@@ -37,13 +38,11 @@
 			</label>
 			<span class="pw_alert">${r}</span>
 			<input type="checkbox" id="login_idSave">아이디 기억하기
-			<p class="forgot-pass"  style="font-size: 12px;">회원가입</p>
+			<button class="forgot-pass" type="button"  style="font-size: 12px;" onclick="location.href='t2join' ">회원가입</button>
 			<p class="forgot-pass"  style="font-size: 12px;">아이디를 잊으셨나요?</p>
 			<p class="forgot-pass"  style="font-size: 12px;">비밀번호를 잊으셨나요?</p>
 			<div class="box bg-1">
-			<button class="button button--nina button--text-thick button--text-upper button--size-s" data-text="LOGIN">
-			<span>H</span><span>E</span><span>L</span><span>L</span><span>O</span>
-			</button>
+			<input type="submit" class="login-btn" value="L o g i n"/>
 			</div>
 		</div>
 </form>
@@ -56,26 +55,19 @@
 
 		<div class="login_txt">
 			<h2 class="login_h2">Welcome!</h2>
-			<div class="login-social">
-				<a href=""><i class="fa fa-kakao">kakao</i></a>
-				<a href=""><i class="fa fa-naver">naver</i></a>
-				<a href=""><i class="fa fa-google-plus"></i></a>
-							</div>
 			
 			<label class="login_label"> <span>ID</span> 
 			<input class="login_input" name="vet_ID" />
 			</label> <label class="login_label"> <span>Password</span> 
 			<input class="login_input" name="vet_PW" />
 			</label>
-			<span class="pw_alert">${r}</span>
+			<span class="pw_alert">${rb}</span>
 			<input type="checkbox" id="login_idSave">아이디 기억하기
 			<p class="forgot-pass"  style="font-size: 12px;">회원가입</p>
 			<p class="forgot-pass"  style="font-size: 12px;">아이디를 잊으셨나요?</p>
 			<p class="forgot-pass"  style="font-size: 12px;">비밀번호를 잊으셨나요?</p>
 			<div class="box bg-1">
-			<button class="button button--nina button--text-thick button--text-upper button--size-s" data-text="LOGIN">
-			<span>H</span><span>E</span><span>L</span><span>L</span><span>O</span>
-			</button>
+			<input type="submit" class="login-btn" value="L o g i n"/>
 			</div>
 		</div>
 </form>
@@ -83,9 +75,10 @@
 
 
 		</section>
-		<div class="menu--shadow"></div>
+		
 	
 </div>
+
 </body>
 <script type="text/javascript">
 $(function() {
@@ -100,6 +93,9 @@ $(function() {
 		$('.menu__item').fadeOut(300);
 		$(this.hash).delay(300).fadeIn();
 	});
+	
+
+	
 
 });</script>
 </html>
