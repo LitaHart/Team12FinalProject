@@ -1,5 +1,12 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: soldesk
 Build-Jdk: 14
+=======
+
+Built-By: leeyoky
+Build-Jdk: 14
+
+>>>>>>> eb0eadb9f24b8507e1f241c61516f973f9aed218
 Created-By: Maven Integration for Eclipse
 
