@@ -7,17 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>
+	<div class="store_wrapper">
+		<div>
+			<h1>Store</h1>
+		</div>
+		<div>
+			<img src="">
+			<img src="">
+			<img src="">
+			<img src="">
+		</div>
 		
-		<h1>SHOP메인!</h1>
-		<h1>인기상품 슬라이드</h1>
-		<h1>SHOP메인!</h1>
-		<h1>SHOP메인!</h1>
-		<h1>SHOP메인!</h1>
-		<h1>SHOP메인!</h1>
-		<h1>SHOP메인!</h1>
-		<h1>SHOP메인!</h1>
 	</div>
-		
 </body>
 </html>
