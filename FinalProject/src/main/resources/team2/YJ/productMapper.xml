@@ -3,8 +3,13 @@
 <mapper namespace="com.team12.main.t2.shop.ProductMapper">
 
 	
+<<<<<<< HEAD
 	<select id="getAllProduct" parameterType="com.team12.main.t2.shop.Product" resultType="com.team12.main.t2.shop.Product">
 		select * from PRODUCT where onExhibition = #{onExhibition }
+=======
+	<select id="getAllProduct" resultType="com.team12.main.t2.shop.Product">
+		select * from PRODUCT
+>>>>>>> 0bdf9ecf0def9becc1efe6b394fd7ee1e7b4587f
 	</select>
 	
 
@@ -14,6 +19,7 @@
 	
 	
 	<select id="getProduct" parameterType="com.team12.main.t2.shop.Product" resultType="com.team12.main.t2.shop.Product">
+<<<<<<< HEAD
 		select * from PRODUCT where productNum = #{productNum }
 	</select>
 	
@@ -21,5 +27,9 @@
 	<update id="updateProduct" parameterType="com.team12.main.t2.shop.Product">
 		UPDATE PRODUCT SET  PET_CATEGORY = #{pet_category},toy_category = #{toy_category}, productName = #{productName},productPrice = #{productPrice},productInfo = #{productInfo},productStock = #{productStock},onExhibition = #{onExhibition}, productThumbnail = #{productThumbnail},productImg = #{productImg},productTag = #{productTag} WHERE productNum = #{productNum}
 	</update>
+=======
+		select * from PRODUCT where PRODUCTNUM = #{productNum }
+	</select>
+>>>>>>> 0bdf9ecf0def9becc1efe6b394fd7ee1e7b4587f
 
 </mapper>

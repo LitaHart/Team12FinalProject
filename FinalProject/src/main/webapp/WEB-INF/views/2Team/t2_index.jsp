@@ -26,7 +26,6 @@
 	<script type="text/javascript" src="resources/t2_js/jQuery.js"></script>
 	<!-- jQuery JAVA SCRIPT -->
 
-<<<<<<< HEAD
 	<script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
@@ -35,8 +34,7 @@
 	<!-- 주소 js -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript" src="resources/t2_js/login_function.js"></script>
-=======
->>>>>>> 6fdcda2840d5244b3f8e78d0d6443366cba0032f
+
 </head>
 <body>
 			<nav class="index_nav"><div class="index-nav-login"><jsp:include page="${loginPage }"></jsp:include></div></nav>
@@ -51,7 +49,11 @@
 	<div id="indexMenu">
         <ul>
             <li><a href="hospitalGo">동물병원 찾기</a></li>
+<<<<<<< HEAD
            <li><a href="viewProductPage.go?onExhibition=Y">상품 판매</a></li>
+=======
+           <li><a href="viewProductPage.go">상품 판매</a></li>
+>>>>>>> 0bdf9ecf0def9becc1efe6b394fd7ee1e7b4587f
             <li class="t2-indexDropdown">
             	<a href="#" class="t2-indexDropbtn">게시판</a>
             	<ul class="t2-indexDropdown-content">

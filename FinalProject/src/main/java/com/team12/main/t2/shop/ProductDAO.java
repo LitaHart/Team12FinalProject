@@ -17,7 +17,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0bdf9ecf0def9becc1efe6b394fd7ee1e7b4587f
 @Service
 public class ProductDAO {
 	
@@ -29,6 +32,7 @@ public class ProductDAO {
 	private SqlSession ss;
 
 	
+<<<<<<< HEAD
 	
 	
 	
@@ -37,23 +41,38 @@ public class ProductDAO {
 		
 		try {
 			request.setAttribute("Product", ss.getMapper(ProductMapper.class).getAllProduct(p));
+=======
+	// 상품전체 정보 가져오기
+	public void getAllProduct(HttpServletRequest request) {
+		try {
+			request.setAttribute("Product", ss.getMapper(ProductMapper.class).getAllProduct());
+>>>>>>> 0bdf9ecf0def9becc1efe6b394fd7ee1e7b4587f
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 0bdf9ecf0def9becc1efe6b394fd7ee1e7b4587f
 	}
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 0bdf9ecf0def9becc1efe6b394fd7ee1e7b4587f
 	// 상품 등록
 	public void regProduct(Model model, HttpServletRequest request, List<MultipartFile> multiFileList,
 			MultipartFile file, String pet_category, String toy_category, String productName, int productPrice,
 			String productInfo, int productStock, String onExhibition, String[] productTag) {
 
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 0bdf9ecf0def9becc1efe6b394fd7ee1e7b4587f
 		String productTag2 = "";
 		
 		
@@ -147,6 +166,7 @@ public class ProductDAO {
 
 	public void getProduct(HttpServletRequest request, Product p) {
 		
+<<<<<<< HEAD
 			
 			try {
 				request.setAttribute("Product", ss.getMapper(ProductMapper.class).getProduct(p));
@@ -281,6 +301,21 @@ String productTag2 = "";
 	
 	
 }
+=======
+			System.out.println(p.getProductNum());
+		
+			request.setAttribute("Product", ss.getMapper(ProductMapper.class).getProduct(p));
+		
+		
+		
+	}
+		
+		
+	}
+
+
+
+>>>>>>> 0bdf9ecf0def9becc1efe6b394fd7ee1e7b4587f
 
 
 
