@@ -26,7 +26,6 @@
 	<script type="text/javascript" src="resources/t2_js/jQuery.js"></script>
 	<!-- jQuery JAVA SCRIPT -->
 
-
 	<script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
