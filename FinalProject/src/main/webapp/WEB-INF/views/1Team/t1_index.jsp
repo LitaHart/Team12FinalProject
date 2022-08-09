@@ -30,7 +30,7 @@
             <img class="icon_search" src="resources/img/search.png">
             <input class="search" type="text" placeholder="insert keyword">
         <span id="resultArea">${result }</span>
-           
+        
            <div class="log_state">
            		<jsp:include page="${loginPage }"></jsp:include> 
            </div>
