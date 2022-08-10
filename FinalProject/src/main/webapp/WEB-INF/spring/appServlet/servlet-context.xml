@@ -26,7 +26,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-<<<<<<< HEAD
+
 	
 	<context:component-scan base-package="com.team12.main" />
 
@@ -38,21 +38,18 @@
 	</beans:bean>
 	
 	
-=======
+
 	<context:component-scan
 		base-package="com.team12.main" />
 		
 	<!-- //////////DB연결관련!///////////// -->
-	<beans:bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+<!-- 	<beans:bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<beans:property name="url"
->>>>>>> 109c5931d7e93a8554889a9602c9ed4d21083d23
-
-			value="jdbc:oracle:thin:@db202204301707_high?TNS_ADMIN=/Users/allmight/eclipse-workspace/OracleWallet/Wallet_DB202204301707"/>
+		<beans:property name="url" value="jdbc:oracle:thin:@db202204301707_high?TNS_ADMIN=/Users/allmight/eclipse-workspace/OracleWallet/Wallet_DB202204301707"/>
 		<beans:property name="username" value="YJJ" />
 		<beans:property name="password" value="YJ802soldesk" />
 
-	</beans:bean>
+	</beans:bean> -->
 	<!-- //////////DB연결관련!///////////// -->
 	
 	
