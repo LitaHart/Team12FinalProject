@@ -17,10 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 0bdf9ecf0def9becc1efe6b394fd7ee1e7b4587f
 @Service
 public class ProductDAO {
 	
@@ -32,8 +28,6 @@ public class ProductDAO {
 	private SqlSession ss;
 
 	
-<<<<<<< HEAD
-	
 	
 	
 	// 상품전체 가져오기	
@@ -41,132 +35,18 @@ public class ProductDAO {
 		
 		try {
 			request.setAttribute("Product", ss.getMapper(ProductMapper.class).getAllProduct(p));
-=======
-	// 상품전체 정보 가져오기
-	public void getAllProduct(HttpServletRequest request) {
-		try {
-			request.setAttribute("Product", ss.getMapper(ProductMapper.class).getAllProduct());
->>>>>>> 0bdf9ecf0def9becc1efe6b394fd7ee1e7b4587f
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-<<<<<<< HEAD
-		
-=======
->>>>>>> 0bdf9ecf0def9becc1efe6b394fd7ee1e7b4587f
 	}
-
-
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 0bdf9ecf0def9becc1efe6b394fd7ee1e7b4587f
+		
 	// 상품 등록
-	public void regProduct(Model model, HttpServletRequest request, List<MultipartFile> multiFileList,
-			MultipartFile file, String pet_category, String toy_category, String productName, int productPrice,
-			String productInfo, int productStock, String onExhibition, String[] productTag) {
-
-<<<<<<< HEAD
-		
-=======
->>>>>>> 0bdf9ecf0def9becc1efe6b394fd7ee1e7b4587f
-		String productTag2 = "";
-		
-		
-		if (productTag != null) {
-			for (String s : productTag) {
-				productTag2 += s + "!";
-			}	
-		}else {
-			productTag2 = "태그 없음";
-		}	
-		
-		
-		
-		
-		String path = request.getSession().getServletContext().getRealPath("resources/t2_yj_files");
-		
-		System.out.println(path);
-		
-		
-		String changeFile = "";
-		String newFileName ="";
-		try {
-			
-			
-			
-	for (int i = 0; i < multiFileList.size(); i++) {
-		
-		// 다중 파일
-		String originFile = multiFileList.get(i).getOriginalFilename();
-		String ext = originFile.substring(originFile.lastIndexOf("."));
-		newFileName = UUID.randomUUID().toString() + ext;
-		System.out.println(newFileName);
-		changeFile += newFileName + "!";
-
 	
-		File uploadFile = new File(path + "/" + newFileName);
-				multiFileList.get(i).transferTo(uploadFile);
-				System.out.println("다중 파일 업로드 성공!");
-				
-				
-	}
-
-	
-	
-	// 단일 파일
-	String fileName = file.getOriginalFilename();
-	System.out.println(path);
-	
-	String saveFileName = UUID.randomUUID().toString() + fileName.substring(fileName.lastIndexOf("."));
-	System.out.println(fileName);
-	System.out.println(saveFileName);
-	
-	
-	// 업로드
-	Product p = new Product();
-	
-	p.setPet_category(pet_category);
-	p.setToy_category(toy_category);
-	p.setProductName(productName);;
-	p.setProductPrice(productPrice);
-	p.setProductInfo(productInfo);
-	p.setProductStock(productStock);
-	p.setOnExhibition(onExhibition);
-	p.setProductTag(productTag2);
-	p.setProductThumbnail(saveFileName);
-	p.setProductImg(changeFile);
-	p.setProductTag(productTag2);
-			
-	
-	if(!file.getOriginalFilename().isEmpty()) {
-		// 실제 업로드 코드
-		file.transferTo(new File(path,saveFileName));
-												// 파일 이름.
-		ss.getMapper(ProductMapper.class).regProduct(p);
-		System.out.println("등록 성공");
-	}else {
-		
-	}
-	
-			} catch (Exception e) {
-				System.out.println("fail");
-				e.printStackTrace();
-			}
-		
-		
-		
-	}
 
 
 
-
+	// 하나만 가져오기
 	public void getProduct(HttpServletRequest request, Product p) {
-		
-<<<<<<< HEAD
 			
 			try {
 				request.setAttribute("Product", ss.getMapper(ProductMapper.class).getProduct(p));
@@ -186,17 +66,13 @@ public class ProductDAO {
 	// 정보 수정
 	public void updateProduct(Model model, HttpServletRequest request, List<MultipartFile> multiFileList,
 			MultipartFile file, String pet_category, String toy_category, String productName, int productPrice,
-			String productInfo, int productStock, String onExhibition, String[] productTag, int productNum, Product p,
-			String OldPet_category) {
+			String productInfo, int productStock, String onExhibition, String[] productTag, int productNum, Product p) {
 		
 		System.out.println(pet_category);
 		
-		if (pet_category == "") {
-			pet_category = OldPet_category;
-		}
 		System.out.println(pet_category);
 		
-String productTag2 = "";
+		String productTag2 = "";
 		
 		
 		if (productTag != null) {
@@ -282,13 +158,110 @@ String productTag2 = "";
 		
 		
 		
+	}
+
+	public void regProduct(String pet_category, String toy_category, String productName, int productPrice,
+			String productInfo, int productStock, String onExhibition, MultipartFile file,
+			List<MultipartFile> multiFileList, HttpServletRequest request, String[] productTag) {
+
+		System.out.println(pet_category);
+		System.out.println(toy_category);
+		System.out.println(productName);
+		System.out.println(productPrice);
+		System.out.println(productInfo);
+		System.out.println(productStock);
+		System.out.println(onExhibition);
+		System.out.println(file);
+		System.out.println(multiFileList);
+		System.out.println(productTag);
+		
+		String productTag2 = "";
+		
+		
+		if (productTag != null) {
+			for (String s : productTag) {
+				productTag2 += s + "!";
+			}	
+		}else {
+			productTag2 = "태그 없음";
+		}	
+		
+		
+		String path = request.getSession().getServletContext().getRealPath("resources/t2_yj_files");
+		
+		System.out.println(path);
+		
+		
+		String changeFile = "";
+		String newFileName ="";
+		try {
+			
+			
+			
+	for (int i = 0; i < multiFileList.size(); i++) {
+		
+		// 다중 파일
+		String originFile = multiFileList.get(i).getOriginalFilename();
+		String ext = originFile.substring(originFile.lastIndexOf("."));
+		newFileName = UUID.randomUUID().toString() + ext;
+		System.out.println(newFileName);
+		changeFile += newFileName + "!";
+
+	
+		File uploadFile = new File(path + "/" + newFileName);
+				multiFileList.get(i).transferTo(uploadFile);
+				System.out.println("다중 파일 업로드 성공!");
+				
+	}
+
+	
+	
+	// 단일 파일
+		String fileName = file.getOriginalFilename();
+		System.out.println(path);
+	
+		String saveFileName = UUID.randomUUID().toString() + fileName.substring(fileName.lastIndexOf("."));
+		System.out.println(fileName);
+		System.out.println(saveFileName);
+	
+	
+	// 업로드
+		Product p = new Product();
+	
+		p.setPet_category(pet_category);
+		p.setToy_category(toy_category);
+		p.setProductName(productName);;
+		p.setProductPrice(productPrice);
+		p.setProductInfo(productInfo);
+		p.setProductStock(productStock);
+		p.setOnExhibition(onExhibition);
+		p.setProductTag(productTag2);
+		p.setProductThumbnail(saveFileName);
+		p.setProductImg(changeFile);
+			
+	
+		if(!file.getOriginalFilename().isEmpty()) {
+		// 실제 업로드 코드
+			file.transferTo(new File(path,saveFileName));
+												// 파일 이름.
+			ss.getMapper(ProductMapper.class).regProduct(p);
+			System.out.println("등록 성공");
+		}else {
+		
+		}
+	
+		} catch (Exception e) {
+			System.out.println("fail");
+			e.printStackTrace();
+		}
+		
+		
 		
 		
 	}
 	
 	
-	
-	
+
 	
 	
 	
@@ -301,21 +274,15 @@ String productTag2 = "";
 	
 	
 }
-=======
-			System.out.println(p.getProductNum());
-		
-			request.setAttribute("Product", ss.getMapper(ProductMapper.class).getProduct(p));
-		
-		
-		
-	}
-		
-		
-	}
-
-
-
->>>>>>> 0bdf9ecf0def9becc1efe6b394fd7ee1e7b4587f
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 

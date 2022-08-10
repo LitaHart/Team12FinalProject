@@ -49,11 +49,7 @@
 	<div id="indexMenu">
         <ul>
             <li><a href="hospitalGo">동물병원 찾기</a></li>
-<<<<<<< HEAD
            <li><a href="viewProductPage.go?onExhibition=Y">상품 판매</a></li>
-=======
-           <li><a href="viewProductPage.go">상품 판매</a></li>
->>>>>>> 0bdf9ecf0def9becc1efe6b394fd7ee1e7b4587f
             <li class="t2-indexDropdown">
             	<a href="#" class="t2-indexDropbtn">게시판</a>
             	<ul class="t2-indexDropdown-content">

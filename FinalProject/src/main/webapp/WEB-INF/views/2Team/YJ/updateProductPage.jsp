@@ -27,7 +27,6 @@
     				<option value="cat">Cat</option>
     				<option value="etc">etc</option>
 					</select></td>
-					<td><input type="hidden" value="${Product.pet_category}" name="OldPet_category"> </td>
 			</tr>
 			<tr>
 				<td>상품 분류</td>
