@@ -1,5 +1,12 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: choeyongjun
 Build-Jdk: 14.0.2
+=======
+
+Built-By: choeyongjun
+Build-Jdk: 14.0.2
+
+>>>>>>> 6b6f7b2c3454c1a1f5be64a9259a82edaa48f61a
 Created-By: Maven Integration for Eclipse
 
