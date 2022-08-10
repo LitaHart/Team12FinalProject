@@ -16,6 +16,16 @@ public interface Team2BoardMapper {
 
 	int updatepost(Team2BoardDTO board);
 
+	int updatecount(Team2BoardDTO board);
+
+	int checkLike(Team2BoardLikeDTO t);
+
+	void updateLike(Team2BoardLikeDTO t);
+
+	void insertInfoLike(Team2BoardLikeDTO t);
+
+	Team2BoardLikeDTO getTotalLike(Team2BoardLikeDTO t);
+
 
 
 

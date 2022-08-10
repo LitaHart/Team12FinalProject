@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -111,9 +110,9 @@ public class ProductController {
 	
 		
 		pDAO.updateProduct(request,multiFileList,file,pet_category,toy_category,productName,productPrice,productInfo,productStock,onExhibition,productTag,productNum,p);
-		pDAO.getProduct(request, p);
+		pDAO.realGetAllProduct(request);
 		
-		request.setAttribute("contentPage", "YJ/detailProductPage.jsp");
+		request.setAttribute("contentPage", "YJ/regProductPage.jsp");
 		return "2Team/t2_index";
 	}
 	
