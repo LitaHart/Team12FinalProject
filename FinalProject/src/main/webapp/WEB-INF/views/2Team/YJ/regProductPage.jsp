@@ -43,7 +43,7 @@
 
 
 <h1>등록페이지</h1>
-
+<h1>${result }</h1>
 <form name="form" action="Product.upload" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
@@ -127,6 +127,25 @@
 	</table>
 
 
+
+	 <div class="container-fluid">
+     <div class="row">
+      <c:forEach var="p" items="${Product}">
+           <div class="col-md-3">
+          <div class="thumbnail">
+                <img src="resources/t2_yj_files/${p.productThumbnail }" style="height: 300px;width:300px">
+                <div class="caption">
+                	<p>${fn:length(p.productName)>20?fn:substring(p.productName,0,20)+="...":p.productName }</p>
+                	<p>가격 <fmt:formatNumber value="${p.productPrice }" pattern="#,###" />원</p>
+                	<p>재고 <fmt:formatNumber value="${p.productStock }" pattern="#,###" />개</p>
+                	<button onclick="location.href='update.product.go?productNum=${p.productNum}'">수정</button>
+					<button onclick="productDelete(${p.productNum},'${p.productThumbnail}','${p.productImg}')">삭제</button>
+                </div>
+            </div>
+           </div>
+         </c:forEach>
+     </div>
+    </div>
 
 	
 

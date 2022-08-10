@@ -26,7 +26,7 @@ public class ProductController {
 	// 상품페이지
 	@RequestMapping(value = "/viewProductPage.go", method = RequestMethod.GET)
 	public String viewProductPage(HttpServletRequest request,Product p) {
-		//상품가져오는일
+		// 진열된 상품가져오는일
 		pDAO.getAllProduct(request,p);
 		request.setAttribute("contentPage", "YJ/viewProductPage.jsp");
 		
@@ -37,8 +37,8 @@ public class ProductController {
 	@RequestMapping(value = "/regProductPage.go", method = RequestMethod.GET)
 	public String regProductPage(HttpServletRequest request,Product p) {
 		
-		// 상품전부가져오는일
-		pDAO.getAllProduct(request,p);
+		// 상품 전부 가져오는일
+		pDAO.realGetAllProduct(request);
 		request.setAttribute("contentPage", "YJ/regProductPage.jsp");
 		
 		return "2Team/t2_index";
@@ -87,7 +87,7 @@ public class ProductController {
 		
 		
 		pDAO.regProduct(pet_category,toy_category,productName,productPrice,productInfo,productStock,onExhibition,file,multiFileList,request,productTag);
-		//pDAO.getAllProduct(request,p);
+		pDAO.realGetAllProduct(request);
 			
 		request.setAttribute("contentPage", "YJ/regProductPage.jsp");
 		return "2Team/t2_index";
@@ -98,7 +98,7 @@ public class ProductController {
 	
 	// 상품 수정
 	@RequestMapping(value = "/product.update", method = RequestMethod.POST)
-	public String ProductUpdate(@RequestParam("productThumbnailNew")MultipartFile file, @RequestParam("productImgNew") List<MultipartFile> multiFileList,Model model ,HttpServletRequest request,Product p,
+	public String ProductUpdate(@RequestParam("productThumbnailNew")MultipartFile file, @RequestParam("productImgNew") List<MultipartFile> multiFileList,HttpServletRequest request,Product p,
 			@RequestParam("pet_category") String pet_category,
 			@RequestParam("toy_category") String toy_category,
 			@RequestParam("productName") String productName,
@@ -110,10 +110,26 @@ public class ProductController {
 			@RequestParam("productNum") int productNum){
 	
 		
-		pDAO.updateProduct(model,request,multiFileList,file,pet_category,toy_category,productName,productPrice,productInfo,productStock,onExhibition,productTag,productNum,p);
+		pDAO.updateProduct(request,multiFileList,file,pet_category,toy_category,productName,productPrice,productInfo,productStock,onExhibition,productTag,productNum,p);
 		pDAO.getProduct(request, p);
 		
 		request.setAttribute("contentPage", "YJ/detailProductPage.jsp");
+		return "2Team/t2_index";
+	}
+	
+	
+	// 상품 삭제
+	@RequestMapping(value = "/product.delete", method = RequestMethod.GET)
+	public String deleteProduct(HttpServletRequest request,
+			@RequestParam("thumbnail") String thumbnail,
+			@RequestParam("img") String img,
+			@RequestParam("num") int num){
+		
+		//상품가져오는일
+		pDAO.deleteProduct(request,thumbnail,img,num);
+		pDAO.realGetAllProduct(request);
+		request.setAttribute("contentPage", "YJ/regProductPage.jsp");
+		
 		return "2Team/t2_index";
 	}
 	

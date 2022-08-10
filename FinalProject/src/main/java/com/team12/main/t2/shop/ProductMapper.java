@@ -13,6 +13,10 @@ public interface ProductMapper {
 
 	void updateProduct(Product p);
 
+	public List<Product> realGetAllProduct();
+
+	int deleteProduct(Product p);
+
 
 	
 

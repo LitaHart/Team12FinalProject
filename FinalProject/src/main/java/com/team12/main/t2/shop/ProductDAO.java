@@ -30,17 +30,27 @@ public class ProductDAO {
 	
 	
 	
-	// 상품전체 가져오기	
+	// 진열될 상품전체 가져오기	
 	public void getAllProduct(HttpServletRequest request, Product p) {
-		
 		try {
 			request.setAttribute("Product", ss.getMapper(ProductMapper.class).getAllProduct(p));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
+	// 상품전체 가져오기
+	public void realGetAllProduct(HttpServletRequest request) {
 		
-	// 상품 등록
+		try {
+			request.setAttribute("Product", ss.getMapper(ProductMapper.class).realGetAllProduct());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+		
 	
 
 
@@ -64,16 +74,13 @@ public class ProductDAO {
 	
 	
 	// 정보 수정
-	public void updateProduct(Model model, HttpServletRequest request, List<MultipartFile> multiFileList,
+	public void updateProduct(HttpServletRequest request, List<MultipartFile> multiFileList,
 			MultipartFile file, String pet_category, String toy_category, String productName, int productPrice,
 			String productInfo, int productStock, String onExhibition, String[] productTag, int productNum, Product p) {
 		
-		System.out.println(pet_category);
 		
-		System.out.println(pet_category);
 		
 		String productTag2 = "";
-		
 		
 		if (productTag != null) {
 			for (String s : productTag) {
@@ -83,6 +90,13 @@ public class ProductDAO {
 			productTag2 = "태그 없음";
 		}	
 		
+		if (pet_category == p.getPet_category()) {
+			pet_category = p.getPet_category();
+		}
+		
+		if (toy_category == p.getToy_category()) {
+			toy_category = p.getToy_category();
+		}
 		
 		
 		
@@ -124,7 +138,6 @@ public class ProductDAO {
 	System.out.println(fileName);
 	System.out.println(saveFileName);
 	
-	System.out.println("여기요여기2" + productName);
 	// 업로드
 	p = new Product();
 	
@@ -159,21 +172,13 @@ public class ProductDAO {
 		
 		
 	}
-
+	
+	
+	// 상품등록
 	public void regProduct(String pet_category, String toy_category, String productName, int productPrice,
 			String productInfo, int productStock, String onExhibition, MultipartFile file,
 			List<MultipartFile> multiFileList, HttpServletRequest request, String[] productTag) {
 
-		System.out.println(pet_category);
-		System.out.println(toy_category);
-		System.out.println(productName);
-		System.out.println(productPrice);
-		System.out.println(productInfo);
-		System.out.println(productStock);
-		System.out.println(onExhibition);
-		System.out.println(file);
-		System.out.println(multiFileList);
-		System.out.println(productTag);
 		
 		String productTag2 = "";
 		
@@ -259,6 +264,43 @@ public class ProductDAO {
 		
 		
 	}
+
+
+
+	public void deleteProduct(HttpServletRequest request, String thumbnail, String img, int num) {
+
+
+		String path = request.getSession().getServletContext().getRealPath("resources/t2_yj_files");
+		
+		Product p = new Product();
+		System.out.println("번호 : " + num);
+		p.setProductNum(num);
+		
+		 String img2[] = img.split("!");
+		
+		if (ss.getMapper(ProductMapper.class).deleteProduct(p) == 1) {
+			request.setAttribute("result", "삭제성공");
+			 for(int i=0 ; i<img2.length ; i++)
+		        {
+		            System.out.println("img2["+i+"] : "+img2[i]);
+		            
+		            new File(path + "/" + img2[i]).delete();
+		            System.out.println("여러사진 삭제성공");
+		        }
+			 	new File(path + "/" + thumbnail).delete();
+			 	System.out.println("1장 삭제성공");
+			 
+			}else {
+			request.setAttribute("result", "삭제실패");
+			
+			}
+		
+		
+		
+		
+	}}
+
+	
 	
 	
 
@@ -273,7 +315,7 @@ public class ProductDAO {
 	
 	
 	
-}
+
 	
 	
 	

@@ -51,17 +51,9 @@
 			</c:forTokens>
 		</td>
 	</tr>
-	<tr>
-		<td>
-		<button onclick="location.href='update.product.go?productNum=${Product.productNum}'">수정</button>
-		<button onclick="">삭제</button>
-		</td>
-	</tr>
 </table>
 
-
-
-
+		
 
 
 
