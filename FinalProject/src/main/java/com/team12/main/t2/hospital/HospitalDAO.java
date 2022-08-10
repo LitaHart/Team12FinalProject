@@ -2,11 +2,28 @@ package com.team12.main.t2.hospital;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class HospitalDAO {
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-	public void hospitalView(HttpServletRequest req) {
+@Service
+public class HospitalDAO {
 	
+	@Autowired
+	private SqlSession ss;
+
+	public void hospitalView(HttpServletRequest req, HospitalDTO hDTO) {
+		 
+		System.out.println("여기는어떰?");
+		System.out.println(hDTO.getHospital_no());
 		
+		
+		Hospital_ListMapper hlm = ss.getMapper(Hospital_ListMapper.class);
+
+		
+		req.setAttribute("Hospital",hlm.getDetailview(hDTO));
+		
+		System.out.println();
 		
 	}
 
