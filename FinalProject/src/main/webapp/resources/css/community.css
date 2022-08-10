@@ -22,6 +22,19 @@
     font-weight: bold;
     margin-bottom: 50px;
     margin: 0 auto;
+    width:100%;
+    margin: 0 auto;
+    height: 800px; /* 작업 완료 후 조정해 줄 것 */
+}
+
+.board_header{
+    /* community */
+    font-size: 50pt;
+    font-weight: bold;
+    margin-top:200px;
+    margin-bottom: 50px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .board_write{
