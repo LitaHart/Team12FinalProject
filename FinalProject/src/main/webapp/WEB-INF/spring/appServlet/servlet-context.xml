@@ -77,10 +77,29 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
+<<<<<<< HEAD
    <beans:bean
       class="org.springframework.web.servlet.view.InternalResourceViewResolver">
       <beans:property name="prefix" value="/WEB-INF/views/" />
       <beans:property name="suffix" value=".jsp" />
+=======
+
+   <beans:bean id="sqlSessionFactory"
+      class="org.mybatis.spring.SqlSessionFactoryBean">
+      <beans:property name="dataSource" ref="dataSource" />
+      <beans:property name="typeAliasesPackage"
+         value="com.team12.main" />
+      <beans:property name="mapperLocations">
+         <beans:list>
+            <beans:value>classpath:testmapper.xml</beans:value>
+            <beans:value>classpath:team2/YJ/productMapper.xml</beans:value>
+            <beans:value>classpath:team1joinMapper.xml</beans:value>
+            <beans:value>classpath:team2BoardMapper.xml</beans:value>
+            <beans:value>classpath:team2loginMapper.xml</beans:value>
+            <beans:value>classpath:shopteam1Mapper.xml</beans:value>
+         </beans:list>
+      </beans:property>
+>>>>>>> 86390ab86e60ed45847fe135fa180fdb5c1453b4
    </beans:bean>
    
    <context:component-scan
