@@ -15,12 +15,12 @@
       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+      
    <annotation-driven />
    <context:annotation-config />
    <tx:annotation-driven />
    <resources mapping="/resources/**" location="/resources/" />
 
-<<<<<<< HEAD
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -77,7 +77,6 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
-=======
    <beans:bean
       class="org.springframework.web.servlet.view.InternalResourceViewResolver">
       <beans:property name="prefix" value="/WEB-INF/views/" />
@@ -88,41 +87,7 @@
       base-package="com.team12.main" />
       
    <!-- //////////DB연결관련!///////////// -->
-<beans:bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<beans:property name="url"
 
-			value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<beans:property name="username" value="c##sj" />
-		<beans:property name="password" value="sj" />
-
-
-	</beans:bean>  
-   
-   
-   
-   <beans:bean id="transactionManager"
-      class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-      <beans:property name="dataSource" ref="dataSource" />
-   </beans:bean>
->>>>>>> d1c215a661651042ca242b0432b63f1b906b16ce
-
-   <beans:bean id="sqlSessionFactory"
-      class="org.mybatis.spring.SqlSessionFactoryBean">
-      <beans:property name="dataSource" ref="dataSource" />
-      <beans:property name="typeAliasesPackage"
-         value="com.team12.main" />
-      <beans:property name="mapperLocations">
-         <beans:list>
-            <beans:value>classpath:testmapper.xml</beans:value>
-            <beans:value>classpath:team2/YJ/productMapper.xml</beans:value>
-            <beans:value>classpath:team1joinMapper.xml</beans:value>
-            <beans:value>classpath:team2BoardMapper.xml</beans:value>
-            <beans:value>classpath:team2loginMapper.xml</beans:value>
-            <beans:value>classpath:shopteam1Mapper.xml</beans:value>
-         </beans:list>
-      </beans:property>
-   </beans:bean>
 
    <beans:bean id="sqlSession"
       class="org.mybatis.spring.SqlSessionTemplate">
