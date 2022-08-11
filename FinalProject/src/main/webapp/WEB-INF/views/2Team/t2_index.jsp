@@ -21,9 +21,10 @@
 	<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
 	<link rel="stylesheet" type="text/css" href="css/settings.css" media="screen" />
 
-	<link href='resources/t2_css/hospital_main.css' rel='stylesheet' type='text/css'> 
 	<!-- Hospital MAIN CSS  -->
+	<link href='resources/t2_css/hospital_main.css' rel='stylesheet' type='text/css'> 
 	<link href='resources/t2_css/hospital_detail.css' rel="stylesheet" type="text/css">
+	<link href='resources/t2_css/hospital_reserve.css' rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="resources/t2_js/jQuery.js"></script>
 	<!-- jQuery JAVA SCRIPT -->
 	<script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
