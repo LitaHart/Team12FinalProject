@@ -12,13 +12,12 @@ import com.team12.main.t2Login.LoginDAO;
 @Controller
 public class HospitalController {
 
-
 	@Autowired
 	private LoginDAO lDAO;
 	
 	@Autowired
 	private HospitalDAO HDAO;
-	
+
 	@RequestMapping(value = "/hospitalGo", method = RequestMethod.GET)
 	public String hospitalGo(HttpServletRequest req) {
 
@@ -30,14 +29,16 @@ public class HospitalController {
 	
 	@RequestMapping(value = "/hospitalDetailGo", method = RequestMethod.GET)
 	public String hospitalDetailGo(HttpServletRequest req , HospitalDTO hDTO) {
-		
+
 		lDAO.loginCheck(req);
+
+		//lDAO.loginCheck(req);
 		HDAO.hospitalView(req,hDTO);
 
 		req.setAttribute("contentPage", "sy/hospitalDetail.jsp");
 		
 		return "2Team/t2_index";
-	
+
 	}
 	@RequestMapping(value = "/hospitalReserveGo", method = RequestMethod.GET)
 	public String hospitalReserveGo(HttpServletRequest req , HospitalDTO hDTO) {
@@ -48,6 +49,7 @@ public class HospitalController {
 		req.setAttribute("contentPage", "sy/hospitalReserve.jsp");
 		
 		return "2Team/t2_index";
-		
 	}
+
+
 }
