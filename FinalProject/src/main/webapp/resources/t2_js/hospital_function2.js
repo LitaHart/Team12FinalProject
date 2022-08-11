@@ -187,6 +187,7 @@ success:function(data){
 				                '            <div class="desc">' + 
 				                '                <div class="ellipsis">후기수</div>' + 
 				                '                <div class="jibun ellipsis"> <a href="hospitalDetailGo?hospital_no='+mgtno+'"> 자세히 </a> ' + 
+				                '                <div class="jibun ellipsis"> <a href=""> 자세히 </a> ' + 
 				                '                <a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
 				                '            </div>' + 
 				                '        </div>' + 
@@ -250,7 +251,7 @@ function hospital_list(){
 					let state = hospital[i].dtlstatenm;
 					
 				
-			
+					if(state == "정상"){
 						
 						if(addr != ""){
 						
@@ -263,7 +264,7 @@ function hospital_list(){
 							
 							)
 						}
-					
+					}
 						table.append(row);
 				});
 				
