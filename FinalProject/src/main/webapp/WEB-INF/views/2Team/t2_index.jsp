@@ -21,12 +21,17 @@
 	<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
 	<link rel="stylesheet" type="text/css" href="css/settings.css" media="screen" />
 
+	<!-- Hospital MAIN CSS  -->
 	<link href='resources/t2_css/hospital_main.css' rel='stylesheet' type='text/css'> 
-	<!-- Hospital CSS  -->
+<<<<<<< HEAD
+	<link href='resources/t2_css/hospital_detail.css' rel="stylesheet" type="text/css">
+	<link href='resources/t2_css/hospital_reserve.css' rel="stylesheet" type="text/css">
+=======
+	<!-- Hospital MAIN CSS  -->
+	<link href='resources/t2_css/hospital_detail.css' rel="stylesheet" type="text/css">
+>>>>>>> Dev
 	<script type="text/javascript" src="resources/t2_js/jQuery.js"></script>
 	<!-- jQuery JAVA SCRIPT -->
-
-
 	<script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
@@ -36,6 +41,9 @@
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript" src="resources/t2_js/login_function.js"></script>
 	<script type="text/javascript" src="resources/t2_js/board.js"></script>
+	<!-- 로그인 JS -->
+	<script type="text/javascript" src="resources/t2_js/validCheck.js"></script>
+	<script type="text/javascript" src="resources/t2_js/login_checkJS.js"></script>
 
 </head>
 <body>
@@ -51,9 +59,16 @@
 	<div id="indexMenu">
         <ul>
             <li><a href="hospitalGo">동물병원 찾기</a></li>
-           <li><a href="viewProductPage.go?onExhibition=Y">상품 판매</a></li>
+           <li class="t2-indexDropdown">
+           <a href="viewProductPage.go?onExhibition=Y">상품 판매</a>
+           <ul class="t2-indexDropdown-content">
+            	<li><a href="#">강아지</a></li>                     
+            	<li><a href="#">고양이</a></li>                 
+            	<li><a href="#">etc</a></li>                 
+            </ul>
+           </li>
             <li class="t2-indexDropdown">
-            	<a href="#" class="t2-indexDropbtn">게시판</a>
+            	<a class="t2-indexDropbtn">게시판</a>
             	<ul class="t2-indexDropdown-content">
             	<li><a href="team2.boardlist?board_category=1">강아지</a></li>                     
             	<li><a href="team2.boardlist?board_category=2">고양이</a></li>                 
