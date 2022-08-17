@@ -18,11 +18,7 @@ public class ShopManagerController {
 	@Autowired
 	private MemberDAO mDAO;
 
-	
-	
-	
-	
-	// YK Store 눌렀을때  페이지입니다 -> dog/cat페이지로 넘어갈 수 있게
+	// Store 눌렀을때  페이지입니다 -> dog/cat페이지로 넘어갈 수 있게
 	@RequestMapping(value="/enter.team1MainShop", method = RequestMethod.GET)
 	public String shopMainEntering(ProductDTO p, HttpServletRequest req) {
 		mDAO.loginCheck(req);
@@ -30,49 +26,35 @@ public class ShopManagerController {
 		return "1Team/t1_index";
 	}
 	
-	
-	//	처음에 숍을 클릭했을 때 // -> Dog 눌렀을때 페이지로 변경하려 해요 YK
+	// Store For Dog
 	@RequestMapping(value="/enter.team1StoreForDog", method = RequestMethod.GET)
 	public String shopEntering(ProductDTO p, HttpServletRequest req) {
-			
 			mDAO.loginCheck(req);
-			//모든 상품 불러오기
 			pDAO.loadProducts(p, req);
-			//페이징하기
-
 			req.setAttribute("contentPage", "ShopPageYUJIN/team1ShopForDog.jsp");
 		return "1Team/t1_index";
 	}
 	
-	
-	// Yk Store For Cat Page입니다
+	// Store For Cat
 	@RequestMapping(value="/enter.team1StoreForCat", method = RequestMethod.GET)
 	public String shopEnteringCat(ProductDTO p, HttpServletRequest req) {
-			
 			mDAO.loginCheck(req);
-			//모든 상품 불러오기
 			pDAO.loadProducts(p, req);
-			//페이징하기
-
 			req.setAttribute("contentPage", "ShopPageYUJIN/team1ShopForCat.jsp");
 		return "1Team/t1_index";
 	}
 	
-	
-	// 상품 디테일 페이지로 이동
-	@RequestMapping(value="/get.aProductTeam1",method = RequestMethod.GET )
-	public String detailAProduct(ProductDTO p, HttpServletRequest req){
-		//상품 하나 가져오기
-		pDAO.loadAProduct(p,req);
-		
-		//로그인체크
+	// Product Detail Page
+	@RequestMapping(value="/enter.productDetail", method = RequestMethod.GET)
+	public String getProductDetail(ProductDTO p, HttpServletRequest req) {
+		mDAO.loginCheck(req);
+		pDAO.loadAProduct(p, req);		
 		req.setAttribute("contentPage", "ShopPageYUJIN/team1shopProductDetail.jsp");
 		return "1Team/t1_index";
 	}
 	
-	
-	// 상품 카테고리별 출력
-	@RequestMapping(value = "/loadByCategory.go", method = RequestMethod.GET)
+	// Load By Category
+	@RequestMapping(value = "/get.team1byCategory", method = RequestMethod.GET)
 	public String loadProductsByCategory(ProductDTO p, HttpServletRequest req) {
 		
 		pDAO.loadProductsByCategory(p, req);
