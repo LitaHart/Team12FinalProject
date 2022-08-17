@@ -1,13 +1,19 @@
 package com.team12.main.team1.join;
 
+import java.io.IOException;
+
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.team12.main.team1.join.*;
 @Controller
 public class MemberController {
 	
@@ -16,6 +22,9 @@ public class MemberController {
 	
 	@Autowired
 	private	MemberDAO mDAO;
+	
+	@Autowired
+	private MemberService ms;
 	
 	
 	
@@ -65,21 +74,30 @@ public class MemberController {
 	
 	
 	
+	@RequestMapping(value="/member.kakao", method=RequestMethod.GET)
+	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
+		System.out.println("#########" + code);
+		String access_Token = ms.getAccessToken(code);
+		HashMap<String, Object> userInfo = ms.getUserInfo(access_Token);
+		System.out.println("###access_Token#### : " + access_Token);
+		System.out.println("###nickname#### : " + userInfo.get("nickname"));
+		System.out.println("###email#### : " + userInfo.get("email"));
+		
+		return "1Team/t1_index";
+    	
+	}
+
+
+		
+		/*
+		 * 리턴값의 testPage는 아무 페이지로 대체해도 괜찮습니다.
+		 * 없는 페이지를 넣어도 무방합니다.
+		 * 404가 떠도 제일 중요한건 #########인증코드 가 잘 출력이 되는지가 중요하므로 너무 신경 안쓰셔도 됩니다.
+		 */
+    	
 	
-//	@RequestMapping(value = "member.info.go", method = RequestMethod.GET)
-//	public String memberInfoGO(HttpServletRequest req) {
-//		if(mDAO.loginCheck(req)) {
-//			
-//			// 세션이 없을 때 null인데 그걸 잘라달라하면 500에러
-//			mDAO.splitAddr(req);
-//			req.setAttribute("login", "../LDH/login.jsp");
-//			
-//		} else {
-//			req.setAttribute("login", "../LDH/notLogin.jsp");
-//		}
-//		return "1Team/t1_index";
-//	}
 	
+
 	@RequestMapping(value = "member.info", method = RequestMethod.GET)
 	public String memberInfo(HttpServletRequest req) {
 		if(mDAO.loginCheck(req)) {
@@ -87,6 +105,21 @@ public class MemberController {
 		// 세션이 없을 때 null인데 그걸 잘라달라하면 500에러
 		mDAO.splitAddr(req);
 		req.setAttribute("contentPage", "../LDH/info.jsp");
+		
+		} else {
+			req.setAttribute("contentPage", "../LDH/loginAndJoin.jsp");
+		}
+		return "1Team/t1_index";
+	}
+	
+	// ------------------ 마이페이지 펫 인포 YK ----------------------------
+	@RequestMapping(value = "pet.info", method = RequestMethod.GET)
+	public String petInfo(HttpServletRequest req) {
+		if(mDAO.loginCheck(req)) {
+			
+		// 세션이 없을 때 null인데 그걸 잘라달라하면 500에러
+		mDAO.splitAddr(req);
+		req.setAttribute("contentPage", "../LDH/petInfo.jsp");
 		
 		} else {
 			req.setAttribute("contentPage", "../LDH/loginAndJoin.jsp");

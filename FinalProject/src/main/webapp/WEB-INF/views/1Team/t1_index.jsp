@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="resources/css/index.css">
 <link rel="stylesheet" href="resources/css/loginAndJoin.css">
 <link rel="stylesheet" href="resources/css/member.css">
+<link rel="stylesheet" href="resources/css/store.css">
 <title>Insert title here</title>
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
 <script type="text/javascript" src="resources/js/loginAndJoin.js"></script>
@@ -16,9 +17,9 @@
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
 <script type="text/javascript" src="resources/js/check.js"></script>
 <script type="text/javascript" src="resources/js/rememberID.js"></script>
-<script type="text/javascript" src="resources/js/kakaoLogin.js"></script> 
+<!-- <script type="text/javascript" src="resources/js/kakaoLogin.js"></script> --> 
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<!-- <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
@@ -54,10 +55,10 @@
                 <!-- <a href="#"><img class="logo" src="DENGSTINY.png" alt=""></a>   -->
                     <!-- dropdown 사료/영양제 -->  
                 
-                <li class="store_drop"><a href="enter.team1Shop">STORE</a>  
+                <li class="store_drop"><a href="enter.team1MainShop">STORE</a>  
                     <ul class="store_drop_content">
-                        <li><a href="#">Food</a></li>
-                        <li><a href="#">Nutrient</a></li>
+                        <li><a href="enter.team1StoreForDog">Dog</a></li>
+                        <li><a href="#">Cat</a></li>
                     </ul>
                 </li>
                 <li><a href="team1.community">COMMUNITY</a>  
