@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +12,8 @@
 <form action="joinDo" method="POST" class="joinForm" name="joinForm"> <!-- onsubmit="return joinCheck()"  -->
                                                                                                
       <h2>회원가입</h2>
-      <div class="join-textForm">
-        <input name="member_ID" type="text" class="join-id" placeholder="아이디">
+      <div class="join-textForm">     
+        <input name="member_ID" type="text" class="join-id" placeholder="아이디">      
         <span id="idcheckResult"></span>
       </div>
       
@@ -21,7 +22,8 @@
       </div>
       
        <div class="join-textForm">
-        <input name="loginPwConfirm"  class="join-pw" placeholder="비밀번호 확인">
+        <input name="loginPwConfirm"  class="join-pw2" placeholder="비밀번호 확인">
+        <span class="pwCheckResult"></span>
       </div>
       
       <div class="join-textForm">
@@ -55,11 +57,11 @@
         <button type="button" id="join_mail_check">이메일인증</button><br>
         <input placeholder="인증번호를 입력해주세요" id="join_mail_num" disabled="disabled">
         <input type="hidden" id="join_num_check" value="emailUnCheck">
-      <span id="mail-check-warn"></span>
-      <span id="emailcheckResult"></span>
+      <span id="mail-check-warn"></span> <!-- 인증코드 확인 -->
+      <span id="emailcheckResult"></span> <!-- 중복확인 -->
       </div>
       
-      
+      <input type="hidden" name="member_linkWhere" value="1">
       <input type="submit" class="join-btn" value="J O I N"/>
     </form>
     </div>

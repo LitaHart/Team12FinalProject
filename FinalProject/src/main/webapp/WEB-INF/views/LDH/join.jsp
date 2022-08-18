@@ -36,10 +36,16 @@
 					<input class="input_name"name="member_name" placeholder="Name *" maxlength="10"
 						autocomplete="off">
 				<br>
+				
+				<!-- 이메일 -->
+				<input class="input_email"name="member_email" placeholder="Email *" type="email" maxlength="30"
+						autocomplete="off">
+				<br>
 
                 <!-- 생년월일 입력 -->
 				<div class="join-textForm brith">
-					생년월일&nbsp;&nbsp;<input class="input_birth" name="member_birth" type="date" class="join-birth">
+					<input class="input_birth" name="member_birth" type="date" class="join-birth" >
+					<p class="required_txt"> 생년월일 </p>
 				</div>
 
                 <!-- 성별 체크 -->
@@ -67,9 +73,6 @@
 					<input class="input_addr" name="m_addr2" maxlength="30" autocomplete="off"	placeholder="상세주소">
 				</div>
 				
-				
-					<input class="input_email"name="member_email" placeholder="Email *" type="email" maxlength="30"
-						autocomplete="off">
 				<br>
 				<!-- 사진 -->
 				<!-- <div class="join_my_photo1">

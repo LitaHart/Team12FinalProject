@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.Cookie;
@@ -121,12 +120,39 @@ public class Team2BoardDAO {
 
 	public void deletePost(HttpServletRequest req, Team2BoardDTO board) {
 		req.setAttribute("board_category", req.getParameter("board_category"));
+		
 
+		Team2BoardDTO imgs = ss.getMapper(Team2BoardMapper.class).getImgsName(board); //이미지 이름 가져오기
+			
+		String file = imgs.getBoard_img(); 
+		
+		
+		if(!file.equals("-")) {
+			
+			String[]files = file.split("!"); // "!" 기준으로 문자열 스플릿 
+			
+			String path = req.getSession().getServletContext().getRealPath("resources/team2_files");
+			
+		
+			for (String s : files) {
+				System.out.println(path + s);
+				
+			new File(path +"/"+ s).delete();
+				
+			}
+			
+			
+			
+		}
+		
+		
 		if (ss.getMapper(Team2BoardMapper.class).deletePost(board) == 1) {
 			System.out.println("삭제성공");
 		} else {
 			System.out.println("삭제실패");
 		}
+		
+			
 
 	}
 
@@ -186,9 +212,12 @@ public class Team2BoardDAO {
 		int result = ss.getMapper(Team2BoardMapper.class).checkLike(t);
 	
 		if(result == 0) {
-			ss.getMapper(Team2BoardMapper.class).updateLike(t);
 			ss.getMapper(Team2BoardMapper.class).insertInfoLike(t);
+			ss.getMapper(Team2BoardMapper.class).countUpTotalLike(t);
 			
+		} else {
+			ss.getMapper(Team2BoardMapper.class).deleteInfoLike(t);
+			ss.getMapper(Team2BoardMapper.class).countDownTotalLike(t);
 		}
 		
 		Team2BoardLikeDTO b = ss.getMapper(Team2BoardMapper.class).getTotalLike(t);
@@ -203,6 +232,60 @@ public class Team2BoardDAO {
 	public int checkLike(Team2BoardLikeDTO t) {
 		return ss.getMapper(Team2BoardMapper.class).checkLike(t);
 	}
+
+	
+	// 코멘트 업로드 
+	public int createComment(Team2CommentDTO t) {
+		int a = ss.getMapper(Team2BoardMapper.class).createcomment(t);
+		
+		if(a == 1) {  //댓글 pk 가져오기
+		Team2CommentDTO c = ss.getMapper(Team2BoardMapper.class).getCommentNum(t);
+		 a = c.getComment_num();
+			
+		}
+		return a;
+	}
+	
+	// 코멘트 10개 ajax 가져오기
+	public void getComment(HttpServletRequest req, Team2BoardDTO board, Team2CommentDTO comment) {
+		comment.setComment_board_num(board.getBoard_num());
+		
+		
+		int allComments = ss.getMapper(Team2BoardMapper.class).getTotalCommentCount(comment); //총 댓글 개수
+		int totalPage = (int) Math.ceil((double) allComments / 10);
+		req.setAttribute("r", totalPage); // r = 총 페이지 수
+		
+		comment.setStart(1);
+		comment.setEnd(10);
+	
+			
+	
+		List<Team2CommentDTO> comments = ss.getMapper(Team2BoardMapper.class).getcomment(comment); //comments 가져오기
+		req.setAttribute("comments", comments);
+		
+	}
+	
+	// 댓글 10개 json형식 얻기
+	public CommentsJson getCommentsJson(Team2CommentDTO t, CommentsJson c) {
+		List<CommentBean> comment = ss.getMapper(Team2BoardMapper.class).getcommentJson(t);
+		c.setComments(comment);
+		
+		return c;
+	}
+	
+	//댓글삭제
+	public int deleteComment(Team2CommentDTO t) {
+		int a = ss.getMapper(Team2BoardMapper.class).deletecomment(t);
+		System.out.println("삭제여부 ------"+a);
+		
+		return a;
+	}
+
+	public int updateComment(Team2CommentDTO t) {
+		int a = ss.getMapper(Team2BoardMapper.class).updatecomment(t);
+		System.out.println("수정완료여부-----"+a);
+		return a;
+	} 
 	
 	
 	

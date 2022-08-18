@@ -6,13 +6,11 @@ import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -21,23 +19,12 @@ import org.springframework.web.multipart.MultipartFile;
 public class ProductDAO {
 	
 	
-	@Autowired
-	ServletContext servletContext;
 	
 	@Autowired
 	private SqlSession ss;
 
 	
 	
-	
-	// 진열될 상품전체 가져오기	
-	public void getAllProduct(HttpServletRequest request, Product p) {
-		try {
-			request.setAttribute("Product", ss.getMapper(ProductMapper.class).getAllProduct(p));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 	
 	// 상품전체 가져오기
 	public void realGetAllProduct(HttpServletRequest request) {
@@ -52,8 +39,6 @@ public class ProductDAO {
 	}
 		
 	
-
-
 
 	// 하나만 가져오기
 	public void getProduct(HttpServletRequest request, Product p) {
@@ -298,9 +283,18 @@ public class ProductDAO {
 		
 		
 		
-	}}
+	}
 
-	
+
+
+	public void getPetCategoryProduct(HttpServletRequest request, Product p) {
+		
+		
+			request.setAttribute("Product", ss.getMapper(ProductMapper.class).getPetProduct(p));
+		}
+		
+
+}
 	
 	
 
