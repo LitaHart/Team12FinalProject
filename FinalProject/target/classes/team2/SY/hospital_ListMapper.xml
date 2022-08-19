@@ -6,5 +6,28 @@
 	<select id="getDetailview" resultType="HospitalDTO">
 		 select * from HOSPITAL_LIST where hospital_no = #{hospital_no}		
 		</select>
+		
+		
+	<resultMap type="pet" id="pet">
+    		<result column="baby_name" property="baby_name"/>
+    		<result column="baby_birth" property="baby_birth"/>
+    		<result column="baby_sex" property="baby_sex"/>
+    		<result column="baby_weight" property="baby_weight"/>
+    		<result column="baby_type" property="baby_type"/>
+		</resultMap>
+ 
+		<resultMap type="Membert2" id="Membert2">
+    		<result column="member_id" property="member_ID"/>
+    	<collection property="petVO" resultMap="pet"/>
+		</resultMap>
+		
+		
+		<select id="getPetinfo" resultType="com.team12.main.t2Login.pet" parameterType="Membert2"> 
+		
+	SELECT PET_INFORMATION.baby_name ,PET_INFORMATION.baby_birth ,PET_INFORMATION.baby_sex ,  PET_INFORMATION.baby_weight , PET_INFORMATION.baby_type
+		from final_member ,PET_INFORMATION
+		where final_member.member_ID = baby_memberID AND final_member.MEMBER_ID = #{member_ID}
+		
+		</select>
 
 </mapper>
