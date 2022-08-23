@@ -1,5 +1,12 @@
 package com.team12.main.t2.hospital;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -34,7 +41,39 @@ public class HospitalDAO {
 	}
 
 
-	public void hopitalReserve(HttpServletRequest req, HospitalDTO hDTO) {
+	public void hopitalReserve(HttpServletRequest req, reserveDTO rDTO) {
+		
+			
+			
+		try {
+			
+		String mbDate =req.getParameter("mbDate");
+		String pbDate =req.getParameter("pbDate");
+		String rdDate =req.getParameter("rdDate");
+		
+		
+		rDTO.setReserve_memberBirth(mbDate);
+		rDTO.setReserve_petBirth(pbDate);
+		rDTO.setReserve_date(rdDate);
+		
+		System.out.println(rDTO.getReserve_memberBirth());
+		System.out.println(rDTO.getReserve_petBirth());
+		System.out.println(rDTO.getReserve_date());
+		
+		if(ss.getMapper(Hospital_ListMapper.class).setReverse(rDTO) == 1 ) {
+			
+			System.out.println("성공");
+			
+		}else {
+			System.out.println("실패");
+		}
+		
+		
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

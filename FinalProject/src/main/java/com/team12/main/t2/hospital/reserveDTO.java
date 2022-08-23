@@ -9,13 +9,13 @@ public class reserveDTO {
 	private String reserve_hospitalName;
  	private String reserve_memberID;		
 	private String reserve_memberName;
-	private Date reserve_memberBirth;
+	private String reserve_memberBirth;
 	private String reserve_memberphNmb;
 	private String reserve_petName;
-	private Date reserve_petBirth;
+	private String reserve_petBirth;
 	private String reserve_petType;
 	private String reserve_petEctinfo;
-	private Date reserve_date;
+	private String reserve_date;
 	private Date reserve_writing_date;
 	
 	
@@ -25,8 +25,8 @@ public class reserveDTO {
 
 
 	public reserveDTO(int reserve_no, String reserve_hospitalNo, String reserve_hospitalName, String reserve_memberID,
-			String reserve_memberName, Date reserve_memberBirth, String reserve_memberphNmb, String reserve_petName,
-			Date reserve_petBirth, String reserve_petType, String reserve_petEctinfo, Date reserve_date,
+			String reserve_memberName, String reserve_memberBirth, String reserve_memberphNmb, String reserve_petName,
+			String reserve_petBirth, String reserve_petType, String reserve_petEctinfo, String reserve_date,
 			Date reserve_writing_date) {
 		super();
 		this.reserve_no = reserve_no;
@@ -95,12 +95,12 @@ public class reserveDTO {
 	}
 
 
-	public Date getReserve_memberBirth() {
+	public String getReserve_memberBirth() {
 		return reserve_memberBirth;
 	}
 
 
-	public void setReserve_memberBirth(Date reserve_memberBirth) {
+	public void setReserve_memberBirth(String reserve_memberBirth) {
 		this.reserve_memberBirth = reserve_memberBirth;
 	}
 
@@ -125,12 +125,12 @@ public class reserveDTO {
 	}
 
 
-	public Date getReserve_petBirth() {
+	public String getReserve_petBirth() {
 		return reserve_petBirth;
 	}
 
 
-	public void setReserve_petBirth(Date reserve_petBirth) {
+	public void setReserve_petBirth(String reserve_petBirth) {
 		this.reserve_petBirth = reserve_petBirth;
 	}
 
@@ -155,12 +155,12 @@ public class reserveDTO {
 	}
 
 
-	public Date getReserve_date() {
+	public String getReserve_date() {
 		return reserve_date;
 	}
 
 
-	public void setReserve_date(Date reserve_date) {
+	public void setReserve_date(String reserve_date) {
 		this.reserve_date = reserve_date;
 	}
 
@@ -173,6 +173,9 @@ public class reserveDTO {
 	public void setReserve_writing_date(Date reserve_writing_date) {
 		this.reserve_writing_date = reserve_writing_date;
 	}
+
+
+	
 
 
 	

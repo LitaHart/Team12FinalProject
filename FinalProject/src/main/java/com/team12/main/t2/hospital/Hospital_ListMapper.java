@@ -9,6 +9,8 @@ public interface Hospital_ListMapper {
 	 HospitalDTO getDetailview(HospitalDTO hDTO);
 
 	 pet getPetinfo(Membert2 m2);
+
+	 int setReverse(reserveDTO rDTO);
 	
 
 }

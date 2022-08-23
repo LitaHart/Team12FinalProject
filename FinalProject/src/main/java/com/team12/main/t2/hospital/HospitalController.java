@@ -56,12 +56,8 @@ public class HospitalController {
 	public String hospitalReserveDo(HttpServletRequest req , reserveDTO rDTO) {
 		
 		lDAO.loginCheck(req);
-		
-		System.out.println(rDTO.getReserve_hospitalName());
-		System.out.println(rDTO.getReserve_hospitalNo());
-		System.out.println("id : "+rDTO.getReserve_memberID());
-		System.out.println("name : "+rDTO.getReserve_memberName());
-		
+		//HDAO.hopitalReserve(req, rDTO);
+	
 		req.setAttribute("contentPage", "sy/hospitalReserveConfirm.jsp");
 		
 		return "2Team/t2_index";
