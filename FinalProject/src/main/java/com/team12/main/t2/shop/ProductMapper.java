@@ -8,7 +8,7 @@ public interface ProductMapper {
 
 	void regProduct(Product p);
 
-	public Object getProduct(Product p);
+	public Product getProduct(Product p);
 
 	void updateProduct(Product p);
 
@@ -18,6 +18,9 @@ public interface ProductMapper {
 
 	public List<Product> getPetProduct(Product p);
 
+	public List<Snack> getSnack(Product p);
+
+	public List<Toy> getToy(Product p);
 
 
 	

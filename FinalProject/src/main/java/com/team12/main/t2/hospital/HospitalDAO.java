@@ -1,12 +1,5 @@
 package com.team12.main.t2.hospital;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -74,6 +67,15 @@ public class HospitalDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+	}
+
+
+	public void hospitalReserveView(HttpServletRequest req, reserveDTO rDTO) {
+		
+		Hospital_ListMapper hlm = ss.getMapper(Hospital_ListMapper.class);
+		
+		req.setAttribute("rConfirm", hlm.getReserveinfo(rDTO));
 		
 	}
 

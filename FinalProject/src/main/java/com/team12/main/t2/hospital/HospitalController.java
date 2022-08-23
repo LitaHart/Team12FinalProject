@@ -62,6 +62,15 @@ public class HospitalController {
 		
 		return "2Team/t2_index";
 	}
+	@RequestMapping(value = "/hospitalReserveLookupgo", method = RequestMethod.GET)
+	public String hospitalConfirmgo(HttpServletRequest req , reserveDTO rDTO) {
+		
+		lDAO.loginCheck(req);
+		//HDAO.hospitalReserveView(req,rDTO);
+		req.setAttribute("contentPage", "sy/hospitalReserveLookup.jsp");
+		
+		return "2Team/t2_index";
+	}
 
 
 }

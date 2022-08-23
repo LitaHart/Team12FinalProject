@@ -3,7 +3,7 @@
 <mapper namespace="com.team12.main.t2.hospital.Hospital_ListMapper">
 
 
-		<select id="getDetailview" resultType="HospitalDTO">
+		<select id="getDetailview" resultType="com.team12.main.t2.hospital.HospitalDTO">
 		 select * from HOSPITAL_LIST where hospital_no = #{hospital_no}		
 		</select>
 		
@@ -21,6 +21,8 @@
 			insert into RESERVE_LIST_TB VALUES(RESERVE_LIST_TB_seq.nextval ,#{reserve_hospitalNo} ,#{reserve_hospitalName} , #{reserve_memberID} ,#{reserve_memberName},#{reserve_memberBirth},#{reserve_memberphNmb},#{reserve_petName},#{reserve_petBirth},#{reserve_petType},#{reserve_petEctinfo}, TO_DATE(#{reserve_date}, 'YYYY-MM-DD- HH24:MI'),CURRENT_DATE )
 		</insert>
 		
+		<!--예약 확인  
+		-->
 		<select id="getReserveinfo" resultType="reserveDTO" parameterType="Membert2">
 		SELECT RESERVE_LIST_TB.RESERVE_HOSPITALNAME , RESERVE_LIST_TB.RESERVE_MEMBERNAME , RESERVE_LIST_TB.RESERVE_MEMBERPHNMB , RESERVE_LIST_TB.RESERVE_PETNAME , RESERVE_LIST_TB.RESERVE_PETECTINFO ,RESERVE_LIST_TB.RESERVE_DATE 
 		from final_member ,RESERVE_LIST_TB

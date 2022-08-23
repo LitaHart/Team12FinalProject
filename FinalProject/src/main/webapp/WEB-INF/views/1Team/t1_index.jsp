@@ -17,6 +17,7 @@
 <script type="text/javascript" src="resources/js/aqicn.js"></script>
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
 <script type="text/javascript" src="resources/js/check.js"></script>
+<script type="text/javascript" src="resources/js/store_detail.js"></script>
 <script type="text/javascript" src="resources/js/rememberID.js"></script>
 <!-- <script type="text/javascript" src="resources/js/kakaoLogin.js"></script> --> 
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -65,7 +66,7 @@
                 <li class="store_drop"><a href="enter.team1MainShop">STORE</a>  
                     <ul class="store_drop_content">
                         <li><a href="enter.team1StoreForDog">Dog</a></li>
-                        <li><a href="#">Cat</a></li>
+                        <li><a href="enter.team1StoreForCat">Cat</a></li>
                     </ul>
                 </li>
                 <li><a href="team1.community">COMMUNITY</a>  
