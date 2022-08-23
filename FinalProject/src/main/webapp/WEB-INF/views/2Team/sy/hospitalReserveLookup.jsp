@@ -1,40 +1,98 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <script type="text/javascript">
- var MOVE = function(param){
-    var self=this;
-    this.object = document.getElementById(param.id);
-    this.time = param.time||10;      //페이지 이동 시간을 정해 준다. 여기선 1분
-    this.url = param.url||'';
-    this.timer = null;
-    this.run = function(){
-     timeString.innerHTML = this.time + '초 후 자동으로 이동 합니다.';
-     this.time--;
-     if(this.time < 0){
-     if(this.url!=''){
-     location.href = this.url;
-     window.clearTimeout(this.timer);
-     }
-     }else{
-     this.timer = window.setTimeout(
-     function(){self.run();}
-     ,1000
-     )
-     }
-  };
-  this.run();
-  }
-  window.onload = function(){
-  new MOVE({id:'prt',url:'hospitalGo'}); //이동할 URL
-  }
-  </script>
 </head>
 <body>
-<span id="timeString"></span> 
+	<div class="reserve-lookup-div">
+        <div class="reserve-lookup-menutab-div">
+         <section class="reserve-lookup-section">
+              <div class="reserve-div-inner">
+                  <div class="reserve-lookup-info-place-1">
+                      <ul class="reserve-lookup-info-list1">
+            
+                              <span class="reserve-lookup-info-list-title">동물병원</span>
+                    
+                          </ul>
+                  </div>
+                  <div class="reserve-lookup-info-place-2">
+                      <ul class="reserve-lookup-info-list2">
+            
+                            <span class="reserve-lookup-info-list-title">예약일시</span>				  				
+                         		  				
+                        					  			
+                         			  			
+                      </ul>
+                  </div>
+                  <div class="reserve-lookup-info-place-3">
+                      <ul class="reserve-lookup-info-list3">
+            
+                            <span class="reserve-lookup-info-list-title">동물이름/생년월일</span>				  				
+                         		  				
+                        					  			
+                         			  			
+                      </ul>
+                  </div>
+                  <div class="reserve-lookup-info-place-4">
+                      <ul class="reserve-lookup-info-list4">
+            
+                            <span class="reserve-lookup-info-list-title">예약신청일</span>				  				
+                         		  				
+                        					  			
+                         			  			
+                      </ul>
+                  </div>
+                  <div class="reserve-lookup-info-place-5">
+                      <ul class="reserve-lookup-info-list5">
+            
+                            <span class="reserve-lookup-info-list-title">문의</span>				  				
+                         		  				
+                        					  			
+                         			  			
+                      </ul>
+                  </div>
+                  <div class="reserve-lookup-info-place-6">
+                      <ul class="reserve-lookup-info-list6">
+            
+                            <span class="reserve-lookup-info-list-title">취소</span>				  				
+                         		  				
+                        					  			
+                         			  			
+                      </ul>
+                  </div>
+               </div>
+     
+         </section>
+         <div>
+         <c:forEach items="${reserveView}" var="r">
+        		<div class=""> 
+        			<span> ${r.reserve_hospitalName}</span> 
+        		</div>
+        		<div>
+        			<span>${r.reserve_date }</span>
+        		</div>
+        		<div>
+        			<span>${r.reserve_petName}</span> 
+        		</div>
+        		<div> 
+        			<span>${r.reserve_petBirth}</span>
+        		</div>
+        		<div > 
+        			<span><fmt:formatDate type="date" dateStyle="medium" value="${r.reserve_writing_date}"/></span>
+        		</div>
+        </c:forEach>
+        </div>   
+        </div>
+        
+        
+     
+		
+	</div>
+
 </body>
 </html>

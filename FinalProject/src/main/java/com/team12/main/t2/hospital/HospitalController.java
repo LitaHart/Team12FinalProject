@@ -56,17 +56,19 @@ public class HospitalController {
 	public String hospitalReserveDo(HttpServletRequest req , reserveDTO rDTO) {
 		
 		lDAO.loginCheck(req);
-		//HDAO.hopitalReserve(req, rDTO);
+		HDAO.hopitalReserve(req, rDTO);
 	
 		req.setAttribute("contentPage", "sy/hospitalReserveConfirm.jsp");
 		
 		return "2Team/t2_index";
 	}
 	@RequestMapping(value = "/hospitalReserveLookupgo", method = RequestMethod.GET)
-	public String hospitalConfirmgo(HttpServletRequest req , reserveDTO rDTO) {
+	public String hospitalConfirmgo(HttpServletRequest req , reserveDTO rDTO ,Membert2 m2) {
 		
+		
+		System.out.println("내기능"+m2.getMember_ID());
 		lDAO.loginCheck(req);
-		//HDAO.hospitalReserveView(req,rDTO);
+		HDAO.hospitalReserveView(req,m2);
 		req.setAttribute("contentPage", "sy/hospitalReserveLookup.jsp");
 		
 		return "2Team/t2_index";

@@ -71,11 +71,11 @@ public class HospitalDAO {
 	}
 
 
-	public void hospitalReserveView(HttpServletRequest req, reserveDTO rDTO) {
+	public void hospitalReserveView(HttpServletRequest req, Membert2 m2) {
 		
 		Hospital_ListMapper hlm = ss.getMapper(Hospital_ListMapper.class);
 		
-		req.setAttribute("rConfirm", hlm.getReserveinfo(rDTO));
+		req.setAttribute("reserveView", hlm.getReserveinfo(m2));
 		
 	}
 
