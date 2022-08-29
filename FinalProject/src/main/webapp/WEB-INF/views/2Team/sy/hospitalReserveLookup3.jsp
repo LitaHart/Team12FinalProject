@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript" src="resources/t2_js/hospital_lookup_function.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -48,7 +47,7 @@
 
 		<li id="_rowLi20210708001251CHK2021070820975530" class="goods_pay_item ">
 			<div class="goods_item">
-				<span class="goods_thumb" id="hcr-no">${r.reserve_no}</span>
+				<span class="goods_thumb">${r.reserve_no}</span>
 				<div class="goods_info">
 					<!-- NV_MID: -->
 					<a href="hospitalDetailGo?hospital_no=${r.reserve_hospitalNo }" class="goods">
@@ -60,9 +59,9 @@
 							<li class="subscription"><span class="blind">예약신청일</span> <fmt:formatDate  value="${r.reserve_writing_date }"/> </li>
 						</ul>
 					</a>
-						<span class="state _statusName">예약${r.reserve_state }</span>
+						<span class="state _statusName">예약확정</span>
 					<p class="guide">
-								<span>예약이 ${r.reserve_state }되었습니다.</span> 이용해주셔서 감사합니다.<br>예약확정 이후 <strong>병원에 대한 문의는  문의버튼을 통해 문의해주세요.</strong>
+								<span>예약이 완료되었습니다.</span> 이용해주셔서 감사합니다.<br>예약확정 이후 <strong>병원에 대한 문의는  문의버튼을 통해 문의해주세요.</strong>
 					</p>
 				</div>
 			</div>
@@ -73,7 +72,7 @@
 			</div>
 				<div class="button_item">
                                 <div class="area_layer">
-                                    <a href="#" onclick="reservecancleGo('${r.reserve_no}');" class="state_button function _click(nmp.front.order.timeline.home.list.rebuyLayerShow(2021070820975530)) _stopDefault">예약취소</a>
+                                    <a href="#" class="state_button function _click(nmp.front.order.timeline.home.list.rebuyLayerShow(2021070820975530)) _stopDefault">예약취소</a>
                                 </div>
 				</div>
 		</li>

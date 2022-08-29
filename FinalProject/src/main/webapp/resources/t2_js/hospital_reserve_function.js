@@ -271,6 +271,17 @@ function calendarSelect() {
 	}
 
 function reserveConfirmGo() {
+	
+	
+		// 예약번호 만들기
+	
+		// 랜덤값 생성 
+		
+		let reserve_no =  Math.floor(new Date().valueOf() * Math.random())
+		console.log(reserve_no);
+
+	
+	
 		
 		// 제대로 된 이름or종을 쓰지 않았을 때 
 	
@@ -298,6 +309,8 @@ function reserveConfirmGo() {
 		let reserve_petEctinfo = document.getElementsByClassName('reserve-textarea')[0].value;
 
 		
+		console.log(reserve_date);
+		
 		//문자열 날짜 split - : ' '  구분 
 		const reverseday = reserve_date.split(/[\-\|:| ]/);
 		const memberbirth = reserve_memberBirth.split(/[\-\|:| ]/);
@@ -310,14 +323,14 @@ function reserveConfirmGo() {
 		
 
 		
-		if ( reserve_date != "-:00" ) {
+		if ( reserve_date != "-" ) {
 			
 			if (Weirdletter.test(standardType) || Weirdletter.test(standardName) ) { 
 			    
 				alert("동물 이름 또는 종을 제대로 써주세요"); 
 			} else {
 				alert('성공');
-				location.href="hospitalReserveDo?reserve_hospitalNo="+reserve_hospitalNo+"&reserve_hospitalName="+reserve_hospitalName+"&reserve_memberID="+reserve_memberID+"&reserve_memberName="+reserve_memberName+
+				location.href="hospitalReserveDo?reserve_no="+reserve_no+"&reserve_hospitalNo="+reserve_hospitalNo+"&reserve_hospitalName="+reserve_hospitalName+"&reserve_memberID="+reserve_memberID+"&reserve_memberName="+reserve_memberName+
 				"&mbDate="+reserve_memberBirth+"&reserve_memberphNmb="+reserve_memberphNmb+"&reserve_petName="+reserve_petName+"&pbDate="+reserve_petBirth+"&reserve_petType="+reserve_petType+"&reserve_petEctinfo="+reserve_petEctinfo+"&rdDate="+reserve_date;
 				
 				
@@ -332,7 +345,7 @@ function reserveConfirmGo() {
 		
 	
 	
-	
+
 		
 		
 		 

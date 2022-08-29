@@ -15,6 +15,8 @@ function hospital_map() {
 	
 	// 지도를 생성합니다    
 	var map = new kakao.maps.Map(mapContainer, mapOption);
+	
+	map.setMaxLevel(8);
 
 
 //지도가 이동, 확대, 축소로 인해 지도영역이 변경되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
