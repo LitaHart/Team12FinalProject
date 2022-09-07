@@ -59,7 +59,7 @@ function checkEmail(email, gender, nickname, birthday) {
 			console.log(data)
 			if (data == 1) {
 				console.log('good')
-				location.reload()
+				location.href="http://localhost/main/team2Main";
 			}
 			
 			

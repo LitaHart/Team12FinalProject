@@ -52,17 +52,13 @@ function createComment() {
     			
     		},
     		error : function () {
-				return false;
+				alert('댓글 작성 실패')
+    			return false;
 			}
     	
     	});//ajax
     	
-    	
-
-			
-
-		
-
+    	$("#commentTXT").val('');
     	
     	
 	});
@@ -182,6 +178,11 @@ function commentUpdate() {
 		
 		txt = $(this).parent().find('input').val();
 		
+		if(txt == ""){
+			alert('내용을 입력하세요')
+			return false;
+		}
+		
 		$.ajax({//댓글 삭제
 			type: "POST" ,
 			url : "comment.update",
@@ -221,6 +222,12 @@ function createChildComment() {
 	
 	$(document).on("click", '.commentChildBtn', function() {
 		let txt = $(select).find('input').val();
+		
+		if(txt == ""){
+			alert('내용을 입력하세요')
+			return false;
+		}
+		
 		let b_num = $('#boardNum').val();
     	let m_id = $('#memberID').val();
     	let p_num = $(this).attr('id')
@@ -246,7 +253,7 @@ function createChildComment() {
     				
     				let date = month +"-"+ day +"  "+ hour +":"+ minute
     				
-    				let inputData = `<div><strong class="cStrong">● ${m_id}</strong> <em class="cEm">${date}</em> <a id="${data}" class="childUpdateAtag"><i class="fa fa-edit">수정</i></a> <a id="${data}" class="childDeleteAtag"><i class="fa fa-times">삭제</i></a><br>&nbsp; <span class="commentSpan">${txt}</span><div class="row" style="display: none"><div class="col-sm-5"><input class="form-control input-sm"></div><div class="col-sm-1"><button class="btn btn-success btn-sm editChildBtn">완료</button></div></div></div>`
+    				let inputData = `<div><h6 style="display: none;">${p_num}</h6><strong class="cStrong">● ${m_id}</strong> <em class="cEm">${date}</em> <a id="${data}" class="childUpdateAtag"><i class="fa fa-edit">수정</i></a> <a id="${data}" class="childDeleteAtag"><i class="fa fa-times">삭제</i></a><br>&nbsp; <span class="commentSpan">${txt}</span><div class="row" style="display: none"><div class="col-sm-5"><input class="form-control input-sm"></div><div class="col-sm-1"><button class="btn btn-success btn-sm editChildBtn">완료</button></div></div></div>`
     				$(last).append(inputData);
 					
 				}
@@ -358,6 +365,11 @@ function childCommentUpdate() {
 		
 		let txt = $(this).parent().parent().find('input').val()
 		
+		if(txt == ""){
+			alert('내용을 입력하세요')
+			return false;
+		}
+		
 		$.ajax({   // 답글 수정 
 			type: "POST" ,
 			url : "child.comment.update",
@@ -399,7 +411,6 @@ function childCommentDelete() {
 		
 		let p_num = $(this).siblings('h6').text();
 		let c_num = $(this).attr('id');
-		
 	
 	$.ajax({   // 답글 삭제
 			type: "POST" ,

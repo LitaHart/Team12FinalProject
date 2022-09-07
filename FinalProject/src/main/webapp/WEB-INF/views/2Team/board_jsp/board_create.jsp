@@ -16,11 +16,11 @@
 <body>
 
 <div class="container">
-	<form action="team2.createPost" method="POST">
+	<form action="team2.createPost" method="POST" onsubmit="return checkEmpty()">
 	
 		<div class="form-group">
 			<label for="title">Title:</label>
-			<input type="text" class="form-control" placeholder="title" id="title" name="board_title">
+			<input type="text" class="form-control" placeholder="title" id="title" name="board_title"  maxlength='50'>
             <input name="board_category" value="${param.board_category}" type="hidden">
             <input name="board_member_id" value="${sessionScope.loginMember.member_ID}" type="hidden"> 
             <input id="board_img_input" name="board_img" value="-" type="hidden"> 
@@ -31,7 +31,7 @@
 			<textarea class="form-control" rows="5" id="summernote" name="board_txt"></textarea>
 		</div>
 	
-		<button type="submit" id="createPostBtn" class="btn btn-primary">글쓰기 등록</button>
+		<button id="createPostBtn" class="btn btn-primary">글쓰기 등록</button>
 	</form>
 </div>
 

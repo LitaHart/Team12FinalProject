@@ -58,14 +58,28 @@
 	</div>
 	
 			<ul class="pagination pagination-sm" style="padding-left: 40%;padding-bottom: 20px;">
-				<!-- <li class="page-item active" aria-current="page"> <span class="page-link">1</span> </li> -->
-			<c:forEach var="i" begin="1" end="${r}">
-				<li class="page-item"><a class="page-link" href="team2.boardlist?board_category=${param.board_category}&vpage=${i}&search=${search}&sort=${sort}">${i}</a> </li>
-			</c:forEach>
+				<c:forEach var="i" begin="1" end="${r}">
+					<li class="page-item ${i}"><a class="page-link" href="team2.boardlist?board_category=${param.board_category}&vpage=${i}&search=${search}&sort=${sort}">${i}</a> </li>
+				</c:forEach>
 			</ul>
 
       
       <input id="loginCheckId" type="hidden" value="${sessionScope.loginMember.member_ID}">
       
 </body>
+<script type="text/javascript">
+$(function() {
+	
+	const urlParams = new URL(location.href).searchParams;
+
+	let vpage = urlParams.get('vpage');
+
+	if(vpage == null){
+		vpage = 1;
+	}
+	
+	$('.'+vpage).attr('class', 'page-item active')
+	
+});
+</script>
 </html>

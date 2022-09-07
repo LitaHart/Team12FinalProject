@@ -1,5 +1,10 @@
 // 좋아요 ajax
 function getBoardLike(board_num,member_ID) {
+	if(member_ID == ""){
+		alert('로그인 부탁드립니다')
+		return false;
+	}
+	
 	$.ajax({
 			url : "post.like",
 			data : {
@@ -73,7 +78,19 @@ function loginChekBoard() {
 }
 
 
-
+function checkEmpty() {
+	let title = $("#title").val();
+	let txt = $("#summernote").val();
+	
+	if(title == ""){
+		alert('제목을 입력하세요')
+		return false;
+	} else if(txt == ""){
+		alert('내용을 입력하세요')
+		return false;
+	}
+	
+}
 
 
 
