@@ -3,16 +3,13 @@ package com.team12.main.t2Login;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-
 import java.net.URLEncoder;
 import java.sql.Date;
 import java.text.ParseException;
@@ -523,7 +520,6 @@ public class LoginDAO {
 	}
 	
 	
-
 
 	public void petInfoUpdate(HttpServletRequest req, MultipartFile baby_img, String baby_name, Double baby_weight,
 			Date baby_birth, String baby_sex, String baby_type, String baby_typeDetail, String baby_neut) {
