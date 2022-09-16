@@ -36,7 +36,8 @@ function getBoardLike(board_num,member_ID) {
 function likeCheck(board_num,member_ID) {
 	
 	if(member_ID == null){
-		return;
+		alert('로그인 부탁드립니다')
+		return false;
 	}
 	
 	

@@ -41,7 +41,7 @@ create table team2_comment(
 )
 create sequence team2_comment_seq;
 ---------------------------------------------------------------------------
---대댓글
+--답글
 create table team2_child_comment(
 	c_child_num			number(6) primary key,
 	c_child_board_num 	number(6) not null,
